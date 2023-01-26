@@ -1,0 +1,39 @@
+#MasterContainer{
+    background-color:  red;
+    width: 100%;
+    height: 60rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+#LogInContainer{
+    background-color: whitesmoke;
+    width: 30rem;
+    height: 30rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1rem solid wheat;
+    border-radius: 20px ;
+
+}
+#Text{
+    background-color: green;
+    width: 15rem;
+    margin: 2rem;
+}
+#TextoName{
+    background-color: aqua;
+    margin: 1rem;
+    padding: 1rem;
+}
+#InputName{
+    padding: 1rem;
+}
+#ButtonIn{
+    text-decoration: none;
+    padding: 1rem;
+    margin: 2rem;
+}
