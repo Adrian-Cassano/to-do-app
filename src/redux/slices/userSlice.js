@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 //COMO INICIA Y ES EL ESTADO, QUE SE VA CAMBIANDO CON EL setFavorito
 const initialState = {
-  name: "",
+  name: null,
 };
 
 // EL SLICE EN SI, QUE IMPORTA EL INITIAL STATE
@@ -13,13 +13,12 @@ export const userSlice = createSlice({
   //Los reductores lo que hacen es modificar los valores del estado
   reducers: {
     setName: (state, action) => {
-      state.name =  action.payload;
+      state.name =  [action.payload];
     },
 
     clearName: (state) => {
       state.name = [];
     },
-
     
   },
 });

@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate  } from "react-router-dom";
 
+
 import { setName } from "../../redux/slices/userSlice";
 
 import styles from "./Welcome.module.css";
@@ -9,8 +10,9 @@ import styles from "./Welcome.module.css";
 const Welcome = () => {
   const dispatch = useDispatch();
   const name = useSelector((store) => store.userSlice);
+
   const navigate = useNavigate();
-  
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const largo =  e.target[0].value.length
@@ -42,6 +44,9 @@ const Welcome = () => {
           <input  id={styles.InputName} type="text" name="nombre" placeholder="Ingresa tu nombre" />
           <button id={styles.ButtonIn}   type="submit" name="submit" >Ingresar</button>
         </form>
+
+        <button id={styles.ButtonIn}>Ingresar</button>
+
       </div>
     </div>
   );
