@@ -5,4 +5,65 @@
     display: flex;
     align-items: center;
     flex-direction: column;
+    justify-content: center;
 }
+#CardContainer{
+    background-color: brown;
+    width: 50rem;
+    height: 50rem;
+}
+#NabBar{
+    background-color: bisque;
+    display: flex;
+    
+}
+#ContainerName{
+    background-color: aqua;
+    width: 40rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#Name{
+    font-size: 50px;
+}
+#SubTitle{
+    font-size: 20px;
+}
+#ContainerButton{
+    background-color: gray;
+    width: 10rem;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+   
+}
+#ButtonTags{
+    background-color: green;
+    text-decoration: none;
+    font-size: 20px;
+    width: 90%;
+    padding: 2px;
+    border-bottom: 1px solid gold;
+    cursor: pointer;
+   
+}
+#ButtonTask{
+    background-color: green;
+    text-decoration: none;
+    font-size: 20px;
+    width: 90%;
+    padding: 2px;
+    border-bottom: 1px solid gold;
+    cursor: pointer;
+   
+}
+#ContainerTasks{
+    background-color: rebeccapurple;
+    width: 50rem;
+    height: 45rem;
+}
+
