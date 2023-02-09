@@ -1,33 +1,85 @@
 import React from "react";
-import { useSelector } from "react-redux";
-import Calender from "../Calender";
+import { useDispatch , useSelector} from "react-redux";
+
+import {setName, setDescription, setCalenderStart, setCalenderEnd, setTag} from '../../redux/slices/modalSlice'
+
+import CalenderStart from "../Calender/CalenderStart";
+import CalenderEnd from "../Calender/CalenderEnd";
+
 
 import styles from "./modal.module.css";
 
 export default function Modal(props) {
-  const calendarSlice = useSelector((store) => store.calendarSlice);
+  const modalSlice = useSelector((store) => store.modalSlice);
+  const dispatch = useDispatch();
+  
+
+  const handleSubmit = (e) =>{
+    e.preventDefault();
+    const titleLargo = e.target[0].value.length;
+    const title = e.target[0].value;
+    const descriptionLargo = e.target[1].value.length;
+    const description = e.target[1].value;
+    const CalenderStart = e.target[2].value;
+    const CalenderEnd = e.target[3].value;
+    const tag = e.target[4].value;
+   if(title === ""){
+    alert("Ingrese un titulo")
+  }
+   else if(description ===""){
+     alert("Ingrese una descripcion")
+   }
+  else if(titleLargo >= 20){
+    alert("Exediste los caracteres en el titulo")
+  }
+  else if(descriptionLargo >= 256){
+    alert("Exediste los caracteres en el titulo")
+  }
+  else{
+  dispatch(setName(title));
+  dispatch(setDescription(description));
+  dispatch(setCalenderStart(CalenderStart));
+  dispatch(setCalenderEnd(CalenderEnd));
+  dispatch(setTag(tag));
+
+  }
+  }
 
   return (
     <div id={styles.ModalContainer}>
       <div id={styles.Modal}>
-        <header>Nueva Tarea</header>
-        <button onClick={()=>props.toggleModal()} id={styles.ButtonModal}>
+        <div id={styles.Titulo}>Nueva Tarea</div>
+        <button onClick={() => props.toggleModal()} id={styles.ButtonModal}>
           x
         </button>
         <div id={styles.FormContainer}>
-          <form>
+          <form onSubmit={handleSubmit}>
             <div>
-              Titulo:<input placeholder="Titulo"></input>
-            </div>
-            <div>
-              Descripcion: <input placeholder="Descripcion (Max 256)"></input>
-            </div>
+              Titulo:<input type="text" placeholder="Titulo"></input>
+              </div>
+              <div>
+              Descripcion: <input type="text" placeholder="Descripcion (Max 256)"></input>
+              </div>
             <div id={styles.ContainerCalendar}>
-            <Calender/>
-            </div>
-            <div>Fecha de finalizacion:</div>
-            <div>
-              Tag:<select></select>
+              <div>Fecha de inicio:
+              <CalenderStart />
+              </div>
+              <div>Fecha de finalizacion:
+              <CalenderEnd />
+              </div>
+              <div>
+                Tag:
+                <select>
+                  <input type=""></input>
+                  <option>None</option>
+                  <option>#Casa</option>
+                  <option>#Trabajo</option>
+                  <option>#Ocio</option>
+                </select>
+              </div>
+              <div id={styles.ContainerButton}>
+              <button type="submit" name="submit">Aceptar</button>
+              </div>
             </div>
           </form>
         </div>
@@ -35,33 +87,3 @@ export default function Modal(props) {
     </div>
   );
 }
-
-// {
-//   /* <div id={styles.Calendar}>
-//                 <div id={styles.NavBar}>
-//                   <button>~</button>
-//                   <div>Mes</div>
-//                   <button>ç</button>
-//                 </div>
-//                 <div id={styles.Days}>
-//                   <div className={styles.Day}>Dom</div>
-//                   <div className={styles.Day}>Lun</div>
-//                   <div className={styles.Day}>Mar</div>
-//                   <div className={styles.Day}>Mie</div>
-//                   <div className={styles.Day}>Jue</div>
-//                   <div className={styles.Day}>Vie</div>
-//                   <div className={styles.Day}>Sab</div>
-//                 </div>
-//                 <div id={styles.NumContainer}>
-//                 {calendarSlice.name?.length?(
-//                  calendarSlice.name?.map((name, index)=>{
-//                 return <div key={index + name} id="name"> {name}  </div>
-//           })
-//           ) :(
-//             <span>No ingresaste ningun nombre</span>
-//           )
-//         }
-                  
-//                 </div>
-//               </div> */
-// }

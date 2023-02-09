@@ -1,62 +1,63 @@
-#ModalContainer{
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    top:0;
-    left:0;
-    background-color: rgba(0, 0, 0,0.5);
-    transition: all 500ms ease;  
-  
+#ModalContainer {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: all 500ms ease;
 }
-#Modal{
-    width: 40rem;
-    height: 40rem;
-    margin: auto;
-    background-color: white;
-    box-shadow: 1px 7px 25px rgba(0, 0, 0,0.6);
-    transition: all 500ms ease;  
-    position: relative;
+#Modal {
+  width: 30rem;
+  height: 30rem;
+  margin: auto;
+  background-color: red;
+  box-shadow: 1px 7px 25px rgba(0, 0, 0, 0.6);
+  transition: all 500ms ease;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: double 20px black;
 }
-#Modal header{
-    padding: 10px;
-    background-color: orange;
-    color: white;
-
+#Titulo {
+  width: 100%;
+  height: 3rem;
+  background-color: brown;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-#ButtonModal{
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    color: black;
-    font-size: 15px;
-    cursor: pointer;
+#ButtonModal {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: black;
+  font-size: 15px;
+  cursor: pointer;
 }
-#FormContainer{
-    background-color: brown;
-
+#FormContainer {
+  background-color: brown;
+  margin: 1rem;
+  width: 25rem;
+  height: 23rem;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  border-radius: 20px;
 }
-#Calendar{
-    background-color: black;
-    width: 15rem;
-    height: 10rem;
-    color:white;
-    
+#ContainerCalendar {
+  height: 3rem;
+  width: 10rem;
+  margin: 1rem 0rem 3rem 0rem;
 }
-#NavBar{
-    background-color: red;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-}
-#Days{
-    display: flex;
-    justify-content: space-between;
-}
-#NumContainer{
-    background-color: firebrick;
-    display: flex;
-    justify-content: space-around;
+#ContainerButton {
+  width: 15rem;
+  display: flex;
+  justify-content: center;
+  margin: 1rem;
 }
