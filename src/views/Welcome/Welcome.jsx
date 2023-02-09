@@ -44,9 +44,6 @@ const Welcome = () => {
           <input  id={styles.InputName} type="text" name="nombre" placeholder="Ingresa tu nombre" />
           <button id={styles.ButtonIn}   type="submit" name="submit" >Ingresar</button>
         </form>
-
-        <button id={styles.ButtonIn}>Ingresar</button>
-
       </div>
     </div>
   );
