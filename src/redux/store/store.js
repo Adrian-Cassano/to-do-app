@@ -1,11 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import userSlice from '../slices/userSlice';
-import calendarSlice from '../slices/calendarSlice';
+import modalSlice from '../slices/modalSlice';
 
 const store = configureStore({
   reducer: {
     userSlice,
-    calendarSlice
+    modalSlice
     
   },
 });

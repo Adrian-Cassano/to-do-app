@@ -8,7 +8,7 @@ import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 
 
 export default function MaterialUIPickers() {
-  const [value, setValue] = React.useState(dayjs('2014-08-18T21:11:54'));
+  const [value, setValue] = React.useState(dayjs());
 
   const handleChange = (newValue) => {
     setValue(newValue);
@@ -18,8 +18,7 @@ export default function MaterialUIPickers() {
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <Stack spacing={3}>
         <DesktopDatePicker
-          label="Date desktop"
-          inputFormat="MM/DD/YYYY"
+          inputFormat="DD/MM/YYYY"
           value={value}
           onChange={handleChange}
           renderInput={(params) => <TextField {...params} />}

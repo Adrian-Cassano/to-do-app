@@ -12,10 +12,7 @@ const Home = () => {
   const navigate = useNavigate ()
   const userSlice = useSelector((store) => store.userSlice);
 
-// const modal = () => {       
-//     const valorModal = document.getElementById("btn-modal").checked = true;
-  
-//    }
+
 
   const [modalOpen, setModalOpen] = useState(false);
 
