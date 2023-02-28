@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-
 //COMO INICIA Y ES EL ESTADO, QUE SE VA CAMBIANDO CON EL setFavorito
 const initialState = {
   tareas: [],
@@ -35,43 +34,34 @@ export const modalSlice = createSlice({
       });
       state.tareas = newArray;
     },
-    setMoveUp: (state, action) => {
-      // const actual = action.payload
-      // const idActual = action.payload.id
-      const newArray = state.tareas.filter((tarea, index) => {
-        
-
-        return action.payload.id !== tarea.id 
-        
-      });
-      state.tareas = newArray;
-      
-      state.tareas.splice(action.payload.id-1,0, action.payload)
-      console.log(action.payload.id)
-      
-      
-    },
     setMoveDown: (state, action) => {
-      // const actual = action.payload
-      // const idActual = action.payload.id
-      console.log(action.payload)
-      const newArray = state.tareas.forEach((tarea, index) => {
-        
-        
-        
-        return  state.tareas.splice(action.payload.id, 2  ,action.payload)
-        
+      var anteriorTarea;
+      const indiceTareaActual = state.tareas.findIndex((tarea) => {
+        return tarea.id === action.payload.id;
       });
-      // state.tareas = newArray;
-      
-      // // console.log(action.payload.id)
-     
+      anteriorTarea = { ...state.tareas[indiceTareaActual + 1] };
+
+      state.tareas.splice(indiceTareaActual, 2, anteriorTarea, action.payload);
     },
-    
+    setMoveUp: (state, action) => {
+      var anteriorTarea;
+      const indiceTareaActual = state.tareas.findIndex((tarea) => {
+        return tarea.id === action.payload.id;
+      });
+      anteriorTarea = { ...state.tareas[indiceTareaActual - 1] };
+
+      state.tareas.splice(
+        indiceTareaActual - 1,
+        2,
+        action.payload,
+        anteriorTarea
+      );
+    },
   },
 });
 
-export const { setTareas, setClear, setMoveDown,setMoveUp } = modalSlice.actions;
+export const { setTareas, setClear, setMoveDown, setMoveUp } =
+  modalSlice.actions;
 
 export const stateday = (state) => state;
 
