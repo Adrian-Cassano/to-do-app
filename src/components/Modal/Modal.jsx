@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import dayjs from "dayjs";
+
 
 import { setTareas } from "../../redux/slices/modalSlice";
 
@@ -16,12 +16,10 @@ export default function Modal(props) {
   const [startDate, setStartDate] = React.useState(new Date());
   const [endDate, setEndDate] = React.useState(new Date());
 
- 
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    const dateStart = moment(startDate).format("MM/DD/YYYY")
-    const dateEnd = moment(endDate).format("MM/DD/YYYY")
+    const dateStart = moment(startDate).format("MM/DD/YYYY");
+    const dateEnd = moment(endDate).format("MM/DD/YYYY");
     const title = e.target[0].value;
     const description = e.target[1].value;
     const tag = e.target[4].value;
@@ -34,9 +32,7 @@ export default function Modal(props) {
     } else if (description.length >= 256) {
       alert("Exediste los caracteres en el titulo");
     } else {
-      dispatch(
-        setTareas({ title, description,dateStart, dateEnd})
-      );
+      dispatch(setTareas({ title, description, dateStart, dateEnd }));
 
       props.toggleModal();
     }
