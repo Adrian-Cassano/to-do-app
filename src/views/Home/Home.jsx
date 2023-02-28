@@ -4,6 +4,8 @@ import { useSelector } from "react-redux";
 import { useNavigate  } from "react-router-dom";
 
 import Modal from '../../components/Modal/Modal'
+import CardTask from '../../components/CardTask/CardTask'
+
 import styles from "./Home.module.css";
 
 
@@ -15,23 +17,24 @@ const Home = () => {
 
 
   const [modalOpen, setModalOpen] = useState(false);
-
-  useEffect(() => {
-    console.log(userSlice)
-    // aca esta la logica del hook
-    if(!userSlice.name){
-      navigate ("/")
-      alert("Por favor vuelva a ingresar su nombre")
-    }
-    return () => {
-      //aca se limpia estados o listener
-    }
-  }, [userSlice])//entre los corchetes va con que variable se actualiza 
   
-
   const toggleModal = () => {
     setModalOpen(!modalOpen);
   };
+  
+  // useEffect(() => {
+  //   // aca esta la logica del hook
+  //   if(!userSlice.name){
+  //     navigate ("/")
+  //     alert("Por favor vuelva a ingresar su nombre")
+  //   }
+  //   return () => {
+  //     //aca se limpia estados o listener
+  //   }
+  // }, [userSlice])//entre los corchetes va con que variable se actualiza 
+  
+
+  
 
   return (
     <div id={styles.MasterContainer}>
@@ -55,7 +58,7 @@ const Home = () => {
         </div>
       </div>
       <div id={styles.ContainerTasks}>
-            <div id={styles.Tasks}>TAREA</div>
+            <div id={styles.Tasks}><CardTask/></div>
       </div>
       </div>
     </div>
