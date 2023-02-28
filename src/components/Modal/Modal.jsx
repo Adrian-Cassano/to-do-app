@@ -1,49 +1,46 @@
 import React from "react";
-import { useDispatch , useSelector} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import dayjs from "dayjs";
 
-import {setName, setDescription, setCalenderStart, setCalenderEnd, setTag} from '../../redux/slices/modalSlice'
+import { setTareas } from "../../redux/slices/modalSlice";
 
-import CalenderStart from "../Calender/CalenderStart";
-import CalenderEnd from "../Calender/CalenderEnd";
-
+import Calender from "../Calender/Calender";
 
 import styles from "./modal.module.css";
+import moment from "moment";
 
 export default function Modal(props) {
   const modalSlice = useSelector((store) => store.modalSlice);
   const dispatch = useDispatch();
-  
 
-  const handleSubmit = (e) =>{
+  const [startDate, setStartDate] = React.useState(new Date());
+  const [endDate, setEndDate] = React.useState(new Date());
+
+ 
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-    const titleLargo = e.target[0].value.length;
+    const dateStart = moment(startDate).format("MM/DD/YYYY")
+    const dateEnd = moment(endDate).format("MM/DD/YYYY")
     const title = e.target[0].value;
-    const descriptionLargo = e.target[1].value.length;
     const description = e.target[1].value;
-    const CalenderStart = e.target[2].value;
-    const CalenderEnd = e.target[3].value;
     const tag = e.target[4].value;
-   if(title === ""){
-    alert("Ingrese un titulo")
-  }
-   else if(description ===""){
-     alert("Ingrese una descripcion")
-   }
-  else if(titleLargo >= 20){
-    alert("Exediste los caracteres en el titulo")
-  }
-  else if(descriptionLargo >= 256){
-    alert("Exediste los caracteres en el titulo")
-  }
-  else{
-  dispatch(setName(title));
-  dispatch(setDescription(description));
-  dispatch(setCalenderStart(CalenderStart));
-  dispatch(setCalenderEnd(CalenderEnd));
-  dispatch(setTag(tag));
+    if (title === "") {
+      alert("Ingrese un titulo");
+    } else if (description === "") {
+      alert("Ingrese una descripcion");
+    } else if (title.length >= 20) {
+      alert("Exediste los caracteres en el titulo");
+    } else if (description.length >= 256) {
+      alert("Exediste los caracteres en el titulo");
+    } else {
+      dispatch(
+        setTareas({ title, description,dateStart, dateEnd})
+      );
 
-  }
-  }
+      props.toggleModal();
+    }
+  };
 
   return (
     <div id={styles.ModalContainer}>
@@ -53,24 +50,26 @@ export default function Modal(props) {
           x
         </button>
         <div id={styles.FormContainer}>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} method="post">
             <div>
               Titulo:<input type="text" placeholder="Titulo"></input>
+            </div>
+            <div>
+              Descripcion:{" "}
+              <input type="text" placeholder="Descripcion (Max 256)"></input>
+            </div>
+            <div id={styles.ContainerCalendar}>
+              <div>
+                Fecha de inicio:
+                <Calender value={startDate} setValue={setStartDate} />
               </div>
               <div>
-              Descripcion: <input type="text" placeholder="Descripcion (Max 256)"></input>
-              </div>
-            <div id={styles.ContainerCalendar}>
-              <div>Fecha de inicio:
-              <CalenderStart />
-              </div>
-              <div>Fecha de finalizacion:
-              <CalenderEnd />
+                Fecha de finalizacion:
+                <Calender value={endDate} setValue={setEndDate} />
               </div>
               <div>
                 Tag:
                 <select>
-                  <input type=""></input>
                   <option>None</option>
                   <option>#Casa</option>
                   <option>#Trabajo</option>
@@ -78,7 +77,9 @@ export default function Modal(props) {
                 </select>
               </div>
               <div id={styles.ContainerButton}>
-              <button type="submit" name="submit">Aceptar</button>
+                <button type="submit" name="submit">
+                  Aceptar
+                </button>
               </div>
             </div>
           </form>
