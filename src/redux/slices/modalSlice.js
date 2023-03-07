@@ -1,20 +1,20 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-//COMO INICIA Y ES EL ESTADO, QUE SE VA CAMBIANDO CON EL setFavorito
+
 const initialState = {
   tareas: [],
   ultimoId: 0,
 };
 
-// EL SLICE EN SI, QUE IMPORTA EL INITIAL STATE
+
 export const modalSlice = createSlice({
-  name: "stateday",
+  name: "statemodal",
   initialState,
 
-  //Los reductores lo que hacen es modificar los valores del estado
+
   reducers: {
     setTareas: (state, action) => {
-      const { title, description, dateStart, dateEnd } = action.payload;
+      const { title, description, dateStart, dateEnd, tag} = action.payload;
 
       state.tareas = [
         ...state.tareas,
@@ -23,6 +23,7 @@ export const modalSlice = createSlice({
           description: description,
           startDate: dateStart,
           endDate: dateEnd,
+          tag : tag,
           id: state.ultimoId,
         },
       ];
@@ -36,24 +37,30 @@ export const modalSlice = createSlice({
     },
     setMoveDown: (state, action) => {
       var anteriorTarea;
+      const tareaActual = state.tareas.find((tarea) => {
+        return tarea.id === action.payload;
+      });
       const indiceTareaActual = state.tareas.findIndex((tarea) => {
-        return tarea.id === action.payload.id;
+        return tarea.id === action.payload;
       });
       anteriorTarea = { ...state.tareas[indiceTareaActual + 1] };
 
-      state.tareas.splice(indiceTareaActual, 2, anteriorTarea, action.payload);
+      state.tareas.splice(indiceTareaActual, 2, anteriorTarea, tareaActual);
     },
     setMoveUp: (state, action) => {
       var anteriorTarea;
+      const tareaActual = state.tareas.find((tarea) => {
+        return tarea.id === action.payload;
+      });
       const indiceTareaActual = state.tareas.findIndex((tarea) => {
-        return tarea.id === action.payload.id;
+        return tarea.id === action.payload;
       });
       anteriorTarea = { ...state.tareas[indiceTareaActual - 1] };
 
       state.tareas.splice(
         indiceTareaActual - 1,
         2,
-        action.payload,
+        tareaActual,
         anteriorTarea
       );
     },
@@ -63,6 +70,6 @@ export const modalSlice = createSlice({
 export const { setTareas, setClear, setMoveDown, setMoveUp } =
   modalSlice.actions;
 
-export const stateday = (state) => state;
+export const statemodal = (state) => state;
 
 export default modalSlice.reducer;

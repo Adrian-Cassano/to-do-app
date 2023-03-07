@@ -1,21 +1,32 @@
-import React, { useEffect, useState } from "react";
-
-import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect} from "react";
+import { useDispatch, useSelector } from "react-redux";
+// import { useNavigate } from "react-router-dom";
 
 import Modal from "../../components/Modal/Modal";
 import CardTask from "../../components/CardTask/CardTask";
 
+import { setTag } from "../../redux/slices/tagSlice";
+
 import styles from "./Home.module.css";
 
 const Home = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const modalSlice = useSelector((store) => store.modalSlice);
   const userSlice = useSelector((store) => store.userSlice);
 
   const [modalOpen, setModalOpen] = useState(false);
 
-  const toggleModal = () => {
-    setModalOpen(!modalOpen);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const tag = e.target[0].value;
+    if (tag === "") {
+      alert("Ingresa un tag");
+    } else if (tag <= 1) {
+      alert("Minimo 2 letras");
+    } else {
+      dispatch(setTag({ tag }));
+    }
   };
 
   // useEffect(() => {
@@ -31,33 +42,49 @@ const Home = () => {
 
   return (
     <div id={styles.MasterContainer}>
+      {modalOpen && <Modal toggleModal={() => setModalOpen(!modalOpen)} />}
       <div id={styles.CardContainer}>
         <div id={styles.NabBar}>
           <div id={styles.ContainerName}>
-            {userSlice.name?.length ? (
-              userSlice.name?.map((name, index) => {
-                return (
-                  <div key={index + name} id="name">
-                    Hola {name} !
-                  </div>
-                );
-              })
+            {userSlice.name ? (
+              <div id="name">Hola {userSlice.name} !</div>
             ) : (
               <span>No ingresaste ningun nombre</span>
             )}
             <div id={styles.SubTitle}>Aca podras manejar tus tareas!</div>
           </div>
           <div id={styles.ContainerButton}>
-            <button id={styles.ButtonTags}>Agregar tags</button>
-            {modalOpen ? <Modal toggleModal={toggleModal} /> : null}
-            <button onClick={() => toggleModal()} id={styles.ButtonTask}>
+            <form onSubmit={handleSubmit}>
+              <input type="text" placeholder="Escibir Tag nuevo" />
+              <button id={styles.ButtonTags} type="submit">
+                Agregar tags
+              </button>
+            </form>
+            <button
+              onClick={() => setModalOpen(!modalOpen)}
+              id={styles.ButtonTask}
+            >
               Agregar tarea
             </button>
           </div>
         </div>
         <div id={styles.ContainerTasks}>
           <div id={styles.Tasks}>
-            <CardTask />
+            {modalSlice?.tareas?.map((tarea, index) => {
+              return (
+                <CardTask
+                  title={tarea.title}
+                  index={index}
+                  id={tarea.id}
+                  description={tarea.description}
+                  startDate={tarea.startDate}
+                  endDate={tarea.endDate}
+                  isFirstCard={index === 0}
+                  isLastCard={modalSlice.tareas.length -1 === index}
+                  largoArray={modalSlice.tareas.length}
+                />
+              );
+            })}
           </div>
         </div>
       </div>

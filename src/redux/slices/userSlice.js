@@ -13,11 +13,11 @@ export const userSlice = createSlice({
   //Los reductores lo que hacen es modificar los valores del estado
   reducers: {
     setName: (state, action) => {
-      state.name = [action.payload];
+      state.name = action.payload;
     },
 
     clearName: (state) => {
-      state.name = [];
+      state.name = "";
     },
   },
 });
