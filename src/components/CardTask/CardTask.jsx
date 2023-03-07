@@ -1,5 +1,5 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
+import {  useDispatch } from "react-redux";
 
 import {
   setClear,
@@ -9,59 +9,57 @@ import {
 
 import styles from "./CardTask.module.css";
 
-const CardTask = () => {
-  const modalSlice = useSelector((store) => store.modalSlice);
+const CardTask = ({
+  title,
+  index,
+  id,
+  description,
+  startDate,
+  endDate,
+  isFirstCard,
+  isLastCard,
+  largoArray,
+}) => {
   const dispatch = useDispatch();
 
-  var largoArray = modalSlice.tareas.length;
-
-  console.log(largoArray);
   return (
     <div>
-      {modalSlice?.tareas?.length ? (
-        modalSlice?.tareas?.map((tarea, index) => {
-          return (
-            <div id={styles.MasterContainer} key={"tarea" + index}>
-              <div id={styles.TextContainer}>
-                <div id={styles.TitleContainer}>
-                  <div id="title">{tarea.title}</div>
-                  <button
-                    id={styles.ButtonContainer}
-                    onClick={() => dispatch(setClear(tarea.id))}
-                  >
-                    Eliminar Task
-                  </button>
-                  {largoArray !== 1 && index + 1 !== largoArray && (
-                    <button
-                      id={styles.ButtonContainer}
-                      onClick={() => dispatch(setMoveDown(tarea))}
-                    >
-                      Mover abajo
-                    </button>
-                  )}
-                  {index !== 0 && (
-                    <button
-                      id={styles.ButtonContainer}
-                      onClick={() => dispatch(setMoveUp(tarea))}
-                    >
-                      Mover arriba
-                    </button>
-                  )}
-                </div>
-                <div id={styles.DescriptionContainer}>
-                  <div id="title">{tarea.description}</div>
-                </div>
-              </div>
-              <div id={styles.DateContainer}>
-                <div id="title">Fecha de inicio: {tarea.startDate}</div>
-                <div id="title">Fecha de finalizacion: {tarea.endDate}</div>
-              </div>
-            </div>
-          );
-        })
-      ) : (
-        <span></span>
-      )}
+      <div id={styles.MasterContainer}>
+        <div id={styles.TextContainer}>
+          <div id={styles.TitleContainer}>
+            <div id="title">{title}</div>
+            <button
+              id={styles.ButtonContainer}
+              onClick={() => dispatch(setClear(id))}
+            >
+              Eliminar Task
+            </button>
+            {largoArray > 1 && !isLastCard  && (
+              <button
+                id={styles.ButtonContainer}
+                onClick={() => dispatch(setMoveDown(id))}
+              >
+                Mover abajo
+              </button>
+            )}
+            {largoArray > 1 && !isFirstCard && (
+              <button
+                id={styles.ButtonContainer}
+                onClick={() => dispatch(setMoveUp(id))}
+              >
+                Mover arriba
+              </button>
+            )}
+          </div>
+          <div id={styles.DescriptionContainer}>
+            <div id="title">{description}</div>
+          </div>
+        </div>
+        <div id={styles.DateContainer}>
+          <div id="title">Fecha de inicio: {startDate}</div>
+          <div id="title">Fecha de finalizacion: {endDate}</div>
+        </div>
+      </div>
     </div>
   );
 };
