@@ -1,16 +1,16 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-
 import { setTareas } from "../../redux/slices/modalSlice";
 
 import Calender from "../Calender/Calender";
+import Tag from "../Tag/Tag";
 
 import styles from "./modal.module.css";
 import moment from "moment";
 
 export default function Modal(props) {
-  const modalSlice = useSelector((store) => store.modalSlice);
+  const tagSlice = useSelector((store) => store.tagSlice);
   const dispatch = useDispatch();
 
   const [startDate, setStartDate] = React.useState(new Date());
@@ -22,7 +22,7 @@ export default function Modal(props) {
     const dateEnd = moment(endDate).format("MM/DD/YYYY");
     const title = e.target[0].value;
     const description = e.target[1].value;
-    const tag = e.target[4].value;
+    const tag = e.target[2].value;
     if (title === "") {
       alert("Ingrese un titulo");
     } else if (description === "") {
@@ -32,7 +32,7 @@ export default function Modal(props) {
     } else if (description.length >= 256) {
       alert("Exediste los caracteres en el titulo");
     } else {
-      dispatch(setTareas({ title, description, dateStart, dateEnd }));
+      dispatch(setTareas({ title, description, dateStart, dateEnd, tag }));
 
       props.toggleModal();
     }
@@ -48,11 +48,11 @@ export default function Modal(props) {
         <div id={styles.FormContainer}>
           <form onSubmit={handleSubmit} method="post">
             <div>
-              Titulo:<input type="text" placeholder="Titulo"></input>
+              Titulo:<input type="text" placeholder="Titulo"/>
             </div>
             <div>
               Descripcion:{" "}
-              <input type="text" placeholder="Descripcion (Max 256)"></input>
+              <input type="text" placeholder="Descripcion (Max 256)"/>
             </div>
             <div id={styles.ContainerCalendar}>
               <div>
@@ -63,14 +63,11 @@ export default function Modal(props) {
                 Fecha de finalizacion:
                 <Calender value={endDate} setValue={setEndDate} />
               </div>
-              <div>
-                Tag:
-                <select>
-                  <option>None</option>
-                  <option>#Casa</option>
-                  <option>#Trabajo</option>
-                  <option>#Ocio</option>
-                </select>
+              <div id={styles.TagsMasterContainer}>
+                Agregar tag
+                
+                  <Tag />
+                
               </div>
               <div id={styles.ContainerButton}>
                 <button type="submit" name="submit">
