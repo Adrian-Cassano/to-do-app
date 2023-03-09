@@ -1,8 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  tags: [],
-  ultimoId: 0,
+  tags: [{
+    tag:"casa",
+    id:0
+  },
+  {
+    tag:"trabajo",
+    id:1
+  }],
+  ultimoId: 2,
 };
 
 export const tagSlice = createSlice({
@@ -22,11 +29,7 @@ export const tagSlice = createSlice({
       state.ultimoId++;
     },
     setShowTag: (state, action) => { 
-      console.log(action.payload)
-      const newArray = state.tags.filter((tag) => {
-        return action.payload === tag.id;
-      });
-      state.tags = newArray;
+      
     },
   },
 });
