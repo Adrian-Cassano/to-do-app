@@ -2,7 +2,7 @@ import React, { useState, useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 // import { useNavigate } from "react-router-dom";
 
-import Modal from "../../components/Modal/Modal";
+import Modal from "../Modal/Modal";
 import CardTask from "../../components/CardTask/CardTask";
 
 import { setTag } from "../../redux/slices/tagSlice";
@@ -73,6 +73,7 @@ const Home = () => {
             {modalSlice?.tareas?.map((tarea, index) => {
               return (
                 <CardTask
+                  key={`cardtask-${index}`}
                   title={tarea.title}
                   index={index}
                   id={tarea.id}
@@ -82,6 +83,7 @@ const Home = () => {
                   isFirstCard={index === 0}
                   isLastCard={modalSlice.tareas.length -1 === index}
                   largoArray={modalSlice.tareas.length}
+                  tag={tarea.tag}
                 />
               );
             })}
