@@ -19,6 +19,7 @@ const CardTask = ({
   isFirstCard,
   isLastCard,
   largoArray,
+  tag
 }) => {
   const dispatch = useDispatch();
 
@@ -58,6 +59,7 @@ const CardTask = ({
         <div id={styles.DateContainer}>
           <div id="title">Fecha de inicio: {startDate}</div>
           <div id="title">Fecha de finalizacion: {endDate}</div>
+          <div>{tag}</div>
         </div>
       </div>
     </div>
