@@ -1,22 +1,36 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { setTareas } from "../../redux/slices/modalSlice";
+import { setTareas, setClear } from "../../redux/slices/modalSlice";
 
 import Calender from "../../components/Calender/Calender";
 import Tag from "../../components/Tag/Tag";
 
-import styles from "./modal.module.css";
+import styles from "./ModalEdit.module.css";
 import moment from "moment";
 
-export default function Modal(props) {
+const ModalEdit = ({
+  tagEdit,
+  startDateEdit,
+  endDateEdit,
+  index,
+  titulo,
+  descripcion,
+  id,
+  toggleModal,
+}) => {
   const dispatch = useDispatch();
 
+  console.log(titulo);
+
+  const modalSlice = useSelector((store) => store.modalSlice);
   const tagSlice = useSelector((store) => store.tagSlice);
 
-  const [startDate, setStartDate] = React.useState(new Date());
-  const [endDate, setEndDate] = React.useState(new Date());
-  const [tag, setTag] = React.useState(tagSlice.tags[0].tag);
+  const [startDate, setStartDate] = React.useState(new Date(startDateEdit));
+  const [endDate, setEndDate] = React.useState(new Date(endDateEdit));
+  const [tag, setTag] = React.useState(tagEdit);
+  const [title, setTitle] = React.useState(titulo);
+  const [description, setDescription] = React.useState(descripcion);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -36,8 +50,8 @@ export default function Modal(props) {
       alert("Exediste los caracteres en el titulo");
     } else {
       dispatch(setTareas({ title, description, dateStart, dateEnd, tag }));
-
-      props.toggleModal();
+      toggleModal();
+      dispatch(setClear(id))
     }
   };
 
@@ -45,18 +59,28 @@ export default function Modal(props) {
     <div id={styles.ModalContainer}>
       <div id={styles.Modal}>
         <div id={styles.Titulo}>Nueva Tarea</div>
-        <button onClick={() => props.toggleModal()} id={styles.ButtonModal}>
+        <button onClick={() => toggleModal()} id={styles.ButtonModal}>
           x
         </button>
         <div id={styles.FormContainer}>
           <form onSubmit={handleSubmit} method="post">
             <div>
               Titulo:
-              <input />
+              <input
+                type="text"
+                placeholder="Titulo"
+                defaultValue={title}
+                setvalue={setTitle}
+              ></input>
             </div>
             <div>
               Descripcion:{" "}
-              <input type="text" placeholder="Descripcion (Max 256)" />
+              <input
+                type="text"
+                placeholder="Descripcion (Max 256)"
+                defaultValue={description}
+                setvalue={setDescription}
+              ></input>
             </div>
             <div id={styles.ContainerCalendar}>
               <div>
@@ -68,7 +92,7 @@ export default function Modal(props) {
                 <Calender value={endDate} setValue={setEndDate} />
               </div>
               <div>
-                Agregar tag :
+                Agregar tag:
                 <div id={styles.Tag}>
                   <Tag value={tag} setValue={setTag} />
                 </div>
@@ -84,4 +108,5 @@ export default function Modal(props) {
       </div>
     </div>
   );
-}
+};
+export default ModalEdit;

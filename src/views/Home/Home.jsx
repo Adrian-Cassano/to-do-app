@@ -1,9 +1,10 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 // import { useNavigate } from "react-router-dom";
 
 import Modal from "../Modal/Modal";
 import CardTask from "../../components/CardTask/CardTask";
+import ModalEdit from "../ModalEdit.jsx/ModalEdit";
 
 import { setTag } from "../../redux/slices/tagSlice";
 
@@ -16,7 +17,7 @@ const Home = () => {
   const userSlice = useSelector((store) => store.userSlice);
 
   const [modalOpen, setModalOpen] = useState(false);
-
+  
   const handleSubmit = (e) => {
     e.preventDefault();
     const tag = e.target[0].value;
@@ -75,13 +76,12 @@ const Home = () => {
                 <CardTask
                   key={`cardtask-${index}`}
                   title={tarea.title}
-                  index={index}
                   id={tarea.id}
                   description={tarea.description}
                   startDate={tarea.startDate}
                   endDate={tarea.endDate}
                   isFirstCard={index === 0}
-                  isLastCard={modalSlice.tareas.length -1 === index}
+                  isLastCard={modalSlice.tareas.length - 1 === index}
                   largoArray={modalSlice.tareas.length}
                   tag={tarea.tag}
                 />

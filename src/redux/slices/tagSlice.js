@@ -28,13 +28,11 @@ export const tagSlice = createSlice({
       ];
       state.ultimoId++;
     },
-    setShowTag: (state, action) => { 
-      
-    },
+   
   },
 });
 
-export const { setTag , setShowTag } = tagSlice.actions;
+export const { setTag  } = tagSlice.actions;
 
 export const stateName = (state) => state;
 
