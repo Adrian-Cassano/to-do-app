@@ -9,29 +9,22 @@ import Tag from "../../components/Tag/Tag";
 import styles from "./modal.module.css";
 import moment from "moment";
 
-
 export default function Modal(props) {
   const dispatch = useDispatch();
 
-  const tagSlice = useSelector((store) => store.tagSlice); 
+  const tagSlice = useSelector((store) => store.tagSlice);
 
   const [startDate, setStartDate] = React.useState(new Date());
   const [endDate, setEndDate] = React.useState(new Date());
   const [tag, setTag] = React.useState(tagSlice.tags[0].tag);
 
- 
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log()
+    console.log();
     const dateStart = moment(startDate).format("MM/DD/YYYY");
     const dateEnd = moment(endDate).format("MM/DD/YYYY");
     const title = e.target[0].value;
     const description = e.target[1].value;
-    
-    
-    
-    
 
     if (title === "") {
       alert("Ingrese un titulo");
@@ -59,7 +52,7 @@ export default function Modal(props) {
           <form onSubmit={handleSubmit} method="post">
             <div>
               Titulo:
-              <input type="text" placeholder="Titulo" />
+              <input />
             </div>
             <div>
               Descripcion:{" "}
@@ -75,8 +68,10 @@ export default function Modal(props) {
                 <Calender value={endDate} setValue={setEndDate} />
               </div>
               <div>
-                Agregar tag
-                <Tag value={tag} setValue={setTag} />
+                Agregar tag :
+                <div id={styles.Tag}>
+                  <Tag value={tag} setValue={setTag} />
+                </div>
               </div>
               <div id={styles.ContainerButton}>
                 <button type="submit" name="submit">
