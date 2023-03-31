@@ -1,20 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-
 const initialState = {
   tareas: [],
   ultimoId: 0,
 };
 
-
 export const modalSlice = createSlice({
   name: "statemodal",
   initialState,
 
-
   reducers: {
     setTareas: (state, action) => {
-      const { title, description, dateStart, dateEnd, tag} = action.payload;
+      const { title, description, dateStart, dateEnd, tag } = action.payload;
 
       state.tareas = [
         ...state.tareas,
@@ -23,7 +20,7 @@ export const modalSlice = createSlice({
           description: description,
           startDate: dateStart,
           endDate: dateEnd,
-          tag : tag,
+          tag: tag,
           id: state.ultimoId,
         },
       ];
@@ -57,12 +54,7 @@ export const modalSlice = createSlice({
       });
       anteriorTarea = { ...state.tareas[indiceTareaActual - 1] };
 
-      state.tareas.splice(
-        indiceTareaActual - 1,
-        2,
-        tareaActual,
-        anteriorTarea
-      );
+      state.tareas.splice(indiceTareaActual - 1, 2, tareaActual, anteriorTarea);
     },
   },
 });

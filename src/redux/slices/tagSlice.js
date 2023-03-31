@@ -1,14 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  tags: [{
-    tag:"casa",
-    id:0
-  },
-  {
-    tag:"trabajo",
-    id:1
-  }],
+  tags: [
+    {
+      tag: "casa",
+      id: 0,
+    },
+    {
+      tag: "trabajo",
+      id: 1,
+    },
+  ],
   ultimoId: 2,
 };
 
@@ -28,11 +30,10 @@ export const tagSlice = createSlice({
       ];
       state.ultimoId++;
     },
-   
   },
 });
 
-export const { setTag  } = tagSlice.actions;
+export const { setTag } = tagSlice.actions;
 
 export const stateName = (state) => state;
 

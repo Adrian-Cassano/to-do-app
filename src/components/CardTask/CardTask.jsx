@@ -1,5 +1,6 @@
+import moment from "moment";
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import {
   setClear,
@@ -25,6 +26,8 @@ const CardTask = ({
   const dispatch = useDispatch();
 
   const [modalEditOpen, setModalEditOpen] = useState(false);
+  var today = new Date();
+  const hoy = moment(today).format("MM/DD/YYYY");
 
   return (
     <div>
@@ -44,22 +47,41 @@ const CardTask = ({
         )}
         <div id={styles.TextContainer}>
           <div id={styles.TitleContainer}>
-            <div id="title">{title}</div>
-            <button
-              id={styles.ButtonContainer}
-              onClick={() => dispatch(setClear(id))}
-            >
-              Eliminar Task
-            </button>
-            <button
-              onClick={() => setModalEditOpen(!modalEditOpen)}
-              id={styles.ButtonTask}
-            >
-              Editar tarea
-            </button>
+            <div>{title}</div>
+            <div id={styles.NavBarButton}>
+              <button
+                id={styles.ButtonDelet}
+                onClick={() => dispatch(setClear(id))}
+              >
+                Eliminar Tarea
+              </button>
+              <button
+                onClick={() => setModalEditOpen(!modalEditOpen)}
+                id={styles.ButtonTask}
+              >
+                Editar tarea
+              </button>
+            </div>
+          </div>
+          <div id={styles.DescriptionContainer}>
+            <div>{description}</div>
+          </div>
+        </div>
+        <div id={styles.InfoContainer}>
+          <div id={styles.DateContainer}>
+            <div>Fecha inicial: {startDate}</div>
+            {endDate < hoy && (
+              <div id={styles.FechaAtrasada}>
+                Fecha atrasada: {endDate}
+              </div>
+            )}
+            {endDate >= hoy && <div>Fecha limite: {endDate}</div>}
+            <div>Tag: {tag}</div>
+          </div>
+          <div id={styles.ButtonMoveCardContainer}>
             {largoArray > 1 && !isLastCard && (
               <button
-                id={styles.ButtonContainer}
+                id={styles.ButtonMove}
                 onClick={() => dispatch(setMoveDown(id))}
               >
                 Mover abajo
@@ -67,21 +89,13 @@ const CardTask = ({
             )}
             {largoArray > 1 && !isFirstCard && (
               <button
-                id={styles.ButtonContainer}
+                id={styles.ButtonMove}
                 onClick={() => dispatch(setMoveUp(id))}
               >
                 Mover arriba
               </button>
             )}
           </div>
-          <div id={styles.DescriptionContainer}>
-            <div id="title">{description}</div>
-          </div>
-        </div>
-        <div id={styles.DateContainer}>
-          <div id="title">Fecha de inicio: {startDate}</div>
-          <div id="title">Fecha de finalizacion: {endDate}</div>
-          <div>{tag}</div>
         </div>
       </div>
     </div>
