@@ -2,15 +2,20 @@
   margin: 0px;
 }
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  background-image: url(./Img/libro2.jpg);
+  background-repeat: no-repeat;
+  z-index: -1;
+  width: 100%;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+:root{
+  /* COLORES */
+  --COLOR_BORDEOSCURO: rgb(0, 0, 135);
+  --COLOR_BORDE: rgb(0, 89, 255);
+  --COLOR_FONDO: rgba(0, 0, 0, 0.581);
+  --COLOR_LETRAS: rgb(255, 255, 255);
 }
