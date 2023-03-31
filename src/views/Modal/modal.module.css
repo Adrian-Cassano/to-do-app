@@ -12,21 +12,22 @@
 }
 #Modal {
   width: 35rem;
-  height: 35rem;
+  height: 30rem;
   margin: auto;
-  background-color: red;
+  background-color: var(--COLOR_BORDE);
   box-shadow: 1px 7px 25px rgba(0, 0, 0, 0.6);
   transition: all 500ms ease;
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: double 20px black;
+  border: solid 15px var(--COLOR_BORDEOSCURO);
+  border-radius: 10px;
 }
 #Titulo {
   width: 100%;
   height: 3rem;
-  background-color: brown;
+  background-color: var(--COLOR_FONDO);
   color: white;
   display: flex;
   justify-content: center;
@@ -41,28 +42,43 @@
   cursor: pointer;
 }
 #FormContainer {
-  background-color: brown;
+  background-color: var(--COLOR_FONDO);
   margin: 1rem;
   width: 30rem;
-  height: 30rem;
+  height: 25rem;
   font-size: 20px;
   display: flex;
   justify-content: center;
   border-radius: 20px;
 }
+#Form {
+  margin: 25px;
+}
+/* #InputTitle{
+  background-color: var(--COLOR_BORDE);
+  width: 10rem;
+  height: 2rem;
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+#InputDescription{
+  background-color: var(--COLOR_BORDE);
+  width: 10rem;
+  height: 2rem;
+  
+} */
 #ContainerCalendar {
   height: 3rem;
   width: 10rem;
   margin: 1rem 0rem 3rem 0rem;
 }
+
 #TagsMasterContainer {
-  background-color: blue;
   margin: 10px 0px 0px 0px;
   width: 10rem;
   height: 14rem;
 }
 #TagsContainer {
-  background-color: red;
   width: 10rem;
   height: 10rem;
   display: flex;

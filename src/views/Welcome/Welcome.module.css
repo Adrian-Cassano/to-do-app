@@ -1,62 +1,65 @@
-#MasterContainer{
-    background-color:  red;
-    width: 100%;
-    height: 60rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-
+#MasterContainer {
+  width: 100%;
+  height: 60rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: var(--COLOR_LETRAS);
 }
-#LogInContainer{
-    background-color: whitesmoke;
-    width: 30rem;
-    height: 30rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border: 1rem solid wheat;
-    border-radius: 20px ;
-
+#LogInContainer {
+  background-color: var(--COLOR_FONDO);
+  width: 30rem;
+  height: 30rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1rem solid var(--COLOR_BORDE);
+  border-radius: 20px;
 }
-#Text{
-    background-color: green;
-    width: 15rem;
-    margin: 2rem;
+#Text {
+  width: 15rem;
+  margin: 1rem;
+  font-size: 20px;
 }
-#TextoName{
-    background-color: aqua;
-    margin: 1rem;
-    padding: 1rem;
+#TextoName {
+  margin: 1rem;
+  padding: 1rem;
+  font-size: 25px;
 }
-#FormContainer{
-    
-    width: 60%;
-    height: 40%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+#FormContainer {
+  width: 60%;
+  height: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-#InputName{
-    text-decoration: none;
-    width: 100%;
-    height: 20%;
-    padding: 1rem;
-    font-size: 20px;
+#InputName {
+  text-decoration: none;
+  width: 100%;
+  height: 20%;
+  padding: 1rem;
+  font-size: 20px;
+  border-radius: 20px 10px;
+  background-color: var(--COLOR_FONDO);
+  color: var(--COLOR_LETRAS);
 }
-#ButtonIn{
-    width: 70%;
-    height: 50%;
-    text-decoration: none;
-    padding: 1rem;
-    margin: 2rem;
-
-    
+#ButtonIn {
+  width: 70%;
+  height: 50%;
+  text-decoration: none;
+  padding: 1rem;
+  margin: 2rem;
+  border-radius: 50px;
+  background-color: var(--COLOR_BORDE);
+  font-size: 18px;
+  cursor: pointer;
 }
-#NavLink{
-    text-decoration: none;
-    background-color: red;
-    padding: 20px;
-    
+#ButtonIn :hover {
+  background-color: red;
+  color: red;
 }
-
+#NavLink {
+  text-decoration: none;
+  padding: 20px;
+}

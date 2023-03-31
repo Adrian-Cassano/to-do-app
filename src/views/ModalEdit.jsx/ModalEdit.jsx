@@ -3,9 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { setTareas, setClear } from "../../redux/slices/modalSlice";
 
+import { toast, ToastContainer } from "react-toastify";
+
 import Calender from "../../components/Calender/Calender";
 import Tag from "../../components/Tag/Tag";
 
+import "react-toastify/dist/ReactToastify.css";
 import styles from "./ModalEdit.module.css";
 import moment from "moment";
 
@@ -21,11 +24,6 @@ const ModalEdit = ({
 }) => {
   const dispatch = useDispatch();
 
-  console.log(titulo);
-
-  const modalSlice = useSelector((store) => store.modalSlice);
-  const tagSlice = useSelector((store) => store.tagSlice);
-
   const [startDate, setStartDate] = React.useState(new Date(startDateEdit));
   const [endDate, setEndDate] = React.useState(new Date(endDateEdit));
   const [tag, setTag] = React.useState(tagEdit);
@@ -34,29 +32,46 @@ const ModalEdit = ({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log();
+
     const dateStart = moment(startDate).format("MM/DD/YYYY");
     const dateEnd = moment(endDate).format("MM/DD/YYYY");
     const title = e.target[0].value;
     const description = e.target[1].value;
 
     if (title === "") {
-      alert("Ingrese un titulo");
+      toast.warn("Ingrese un titulo");
     } else if (description === "") {
-      alert("Ingrese una descripcion");
+      toast.warn("Ingrese una descripcion");
     } else if (title.length >= 20) {
-      alert("Exediste los caracteres en el titulo");
+      toast.warn("Exediste los caracteres en el titulo");
     } else if (description.length >= 256) {
-      alert("Exediste los caracteres en el titulo");
+      toast.warn("Exediste los caracteres en el titulo");
+    } else if (startDate === null || endDate === null) {
+      toast.warn("Ingrese una fecha de valida");
+    } else if (dateStart === dateEnd) {
+      toast.warn("Tus fechas son iguales");
     } else {
       dispatch(setTareas({ title, description, dateStart, dateEnd, tag }));
       toggleModal();
-      dispatch(setClear(id))
+      dispatch(setClear(id));
     }
   };
 
   return (
     <div id={styles.ModalContainer}>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        limit={1}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover={false}
+        theme="light"
+      />
       <div id={styles.Modal}>
         <div id={styles.Titulo}>Nueva Tarea</div>
         <button onClick={() => toggleModal()} id={styles.ButtonModal}>

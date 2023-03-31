@@ -3,11 +3,15 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { setTareas } from "../../redux/slices/modalSlice";
 
+import { toast, ToastContainer } from "react-toastify";
+
+import moment from "moment";
+
 import Calender from "../../components/Calender/Calender";
 import Tag from "../../components/Tag/Tag";
 
+import "react-toastify/dist/ReactToastify.css";
 import styles from "./modal.module.css";
-import moment from "moment";
 
 export default function Modal(props) {
   const dispatch = useDispatch();
@@ -20,20 +24,24 @@ export default function Modal(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log();
+
     const dateStart = moment(startDate).format("MM/DD/YYYY");
     const dateEnd = moment(endDate).format("MM/DD/YYYY");
     const title = e.target[0].value;
     const description = e.target[1].value;
 
     if (title === "") {
-      alert("Ingrese un titulo");
+      toast.warn("Ingrese un titulo");
     } else if (description === "") {
-      alert("Ingrese una descripcion");
+      toast.warn("Ingrese una descripcion");
     } else if (title.length >= 20) {
-      alert("Exediste los caracteres en el titulo");
+      toast.warn("Exediste los carácteres en el titulo");
     } else if (description.length >= 256) {
-      alert("Exediste los caracteres en el titulo");
+      toast.warn("Exediste los carácteres en el titulo");
+    } else if (startDate === null || endDate === null) {
+      toast.warn("Ingrese una fecha de valida");
+    } else if (dateStart === dateEnd) {
+      toast.warn("Tus fechas son iguales");
     } else {
       dispatch(setTareas({ title, description, dateStart, dateEnd, tag }));
 
@@ -43,26 +51,49 @@ export default function Modal(props) {
 
   return (
     <div id={styles.ModalContainer}>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        limit={1}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover={false}
+        theme="light"
+      />
+
       <div id={styles.Modal}>
         <div id={styles.Titulo}>Nueva Tarea</div>
         <button onClick={() => props.toggleModal()} id={styles.ButtonModal}>
           x
         </button>
         <div id={styles.FormContainer}>
-          <form onSubmit={handleSubmit} method="post">
+          <form onSubmit={handleSubmit} id={styles.Form} method="post">
             <div>
               Titulo:
-              <input />
+              <input id={styles.InputTitle} placeholder="Ingresar titulo" />
             </div>
             <div>
               Descripcion:{" "}
-              <input type="text" placeholder="Descripcion (Max 256)" />
+              <input
+                id={styles.InputDescription}
+                type="text"
+                placeholder="Descripcion (Max 256)"
+              />
             </div>
             <div id={styles.ContainerCalendar}>
               <div>
                 Fecha de inicio:
-                <Calender value={startDate} setValue={setStartDate} />
+                <Calender
+                  id={styles.CalenderStartDate}
+                  value={startDate}
+                  setValue={setStartDate}
+                />
               </div>
+
               <div>
                 Fecha de finalizacion:
                 <Calender value={endDate} setValue={setEndDate} />
