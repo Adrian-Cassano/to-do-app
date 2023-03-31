@@ -2,8 +2,11 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
+import { toast, ToastContainer } from "react-toastify";
+
 import { setName } from "../../redux/slices/userSlice";
 
+import "react-toastify/dist/ReactToastify.css";
 import styles from "./Welcome.module.css";
 
 const Welcome = () => {
@@ -17,11 +20,11 @@ const Welcome = () => {
     const largo = e.target[0].value.length;
     const name = e.target[0].value;
     if (name === "") {
-      alert("Completa tu nombre");
+      toast.warn("Completa tu nombre");
     } else if (largo < 4) {
-      alert("Minimo 4 letras");
+      toast.warn("Minimo 4 carácteres");
     } else if (largo >= 18) {
-      alert("Maximo 18");
+      toast.warn("Maximo 18 carácteres");
     } else {
       dispatch(setName(name));
       navigate("/Home");
@@ -30,6 +33,19 @@ const Welcome = () => {
 
   return (
     <div id={styles.MasterContainer}>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        limit={1}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover={false}
+        theme="light"
+      />
       <h1>TO-DO-APP</h1>
       <div id={styles.LogInContainer}>
         <div id={styles.Text}>

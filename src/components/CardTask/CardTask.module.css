@@ -1,37 +1,82 @@
 #MasterContainer {
-  background-color: green;
   width: 45rem;
   height: 10rem;
-  border: 7px double white;
+  border: 10px double var(--COLOR_BORDE);
   margin: 1rem;
   display: flex;
-  font-size: 20px;
+  color: var(--COLOR_LETRAS);
 }
 #TextContainer {
-  background-color: aqua;
   width: 70%;
   height: 100%;
 }
 #TitleContainer {
-  background-color: yellow;
   width: 100%;
-  height: 20%;
   display: flex;
-  justify-content: space-between;  
+  justify-content: space-between;
   align-items: flex-start;
+  font-size: 20px;
+  background-color: var(--COLOR_BORDE);
 }
-#ButtonContainer{
-  background-color: red;
+#NavBarButton {
+  display: flex;
+  flex-direction: column;
+}
+#ButtonContainer {
   cursor: pointer;
 }
 #DescriptionContainer {
-  background-color: red;
   width: 29rem;
-  height: 5rem;
+  height: 6rem;
   margin: 1rem;
 }
+#InfoContainer {
+  width: 100%;
+  height: 100%;
+  border-left: 10px double var(--COLOR_BORDE);
+  display: flex;
+  flex-direction: column-reverse;
+  
+}
 #DateContainer {
-  background-color: rebeccapurple;
-  width: 30%;
+  
+  width: 100%;
   height: 100%;
 }
+#FechaAtrasada {
+  color: red;
+}
+#ButtonMoveCardContainer  {
+  border-bottom: 10px double var(--COLOR_BORDE);
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  text-decoration: none;
+  justify-content: center;
+  text-align: center;
+  margin: 10px 0px 10px 0px;
+}
+
+#ButtonDelet {
+  background-color: rgb(0, 2, 118);
+  border-radius: 10px;
+  border: 5px solid var(--COLOR_BORDEOSCURO);
+  cursor: pointer;
+  color: var(--COLOR_LETRAS);
+}
+
+#ButtonMove{
+  background-color:var(--COLOR_BORDE);
+  border-radius: 10px;
+  border: 5px solid var(--COLOR_BORDEOSCURO);
+  cursor: pointer;
+  color: var(--COLOR_LETRAS);
+}
+#ButtonTask{
+  background-color:var(--COLOR_BORDE);
+  border-radius: 10px;
+  border: 5px solid var(--COLOR_BORDEOSCURO);
+  cursor: pointer;
+  color: var(--COLOR_LETRAS);
+}
+

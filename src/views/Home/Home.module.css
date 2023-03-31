@@ -1,24 +1,25 @@
 #MasterContainer {
-  background-color: red;
   width: 100%;
   height: 60rem;
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: center;
+  color: var(--COLOR_LETRAS);
 }
 #CardContainer {
-  background-color: brown;
   width: 50rem;
-  height: 50rem;
+  height: 52rem;
+  border-radius: 20px;
+  background-color: var(--COLOR_FONDO);
+  border: 1rem solid var(--COLOR_BORDE);
 }
 #NabBar {
-  background-color: bisque;
+  border: 1rem solid rgb(0, 0, 135);
   display: flex;
 }
 #ContainerName {
-  background-color: aqua;
-  width: 40rem;
+  width: 30rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -30,37 +31,49 @@
   font-size: 20px;
 }
 #ContainerButton {
-  background-color: gray;
-  width: 10rem;
+  width: 20rem;
   text-decoration: none;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-#ButtonTags {
-  background-color: green;
-  text-decoration: none;
-  font-size: 20px;
-  width: 90%;
-  padding: 2px;
-  border-bottom: 1px solid gold;
-  cursor: pointer;
+  align-items: flex-end;
 }
 #ButtonTask {
-  background-color: green;
+  background-color: var(--COLOR_BORDE);
+  border-radius: 15px;
   text-decoration: none;
   font-size: 20px;
-  width: 90%;
-  padding: 2px;
-  border-bottom: 1px solid gold;
+  width: 10rem;
+  height: 2rem;
   cursor: pointer;
+  border: 5px solid var(--COLOR_BORDEOSCURO);
+  color: var(--COLOR_LETRAS);
 }
+#ButtonTags {
+  background-color: var(--COLOR_BORDE);
+  border-radius: 15px;
+  border: 5px solid var(--COLOR_BORDEOSCURO);
+  text-decoration: none;
+  font-size: 20px;
+  height: 2rem;
+  width: 10rem;
+  padding: 2px;
+  cursor: pointer;
+  color: var(--COLOR_LETRAS);
+}
+#InputTag {
+  width: 7rem;
+  height: 2rem;
+  text-decoration: none;
+  border-radius: 20px 10px;
+  background-color: var(--COLOR_FONDO);
+  color: var(--COLOR_LETRAS);
+}
+
 #ContainerTasks {
-  background-color: rebeccapurple;
   width: 50rem;
   height: 45rem;
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow: auto;
 }
