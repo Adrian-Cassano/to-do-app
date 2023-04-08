@@ -13,22 +13,23 @@ export default function Tag({ value, setValue }) {
   return (
     <Box sx={{ minWidth: 120 }}>
       <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">Tag</InputLabel>
-        <Select
+        
+        <select
           selected={value}
           onChange={(e) => {
             setValue(e.target.value);
           }}
-          label="Tag"
+          
+          defaultValue="casa"
         >
           {tagSlice?.tags?.map((tag, index) => {
             return (
-              <MenuItem key={tag.id + index} value={tag.tag}>
+              <option key={tag.id + index} value={tag.tag}>
                 {tag.tag}
-              </MenuItem>
+              </option>
             );
           })}
-        </Select>
+        </select>
       </FormControl>
     </Box>
   );
