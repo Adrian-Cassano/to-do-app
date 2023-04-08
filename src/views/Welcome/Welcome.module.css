@@ -10,15 +10,20 @@
 #LogInContainer {
   background-color: var(--COLOR_FONDO);
   width: 30rem;
-  height: 30rem;
+  height: 25rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 1rem solid var(--COLOR_BORDE);
+  border: 5px solid var(--COLOR_BORDE);
   border-radius: 20px;
 }
+#Title{
+  margin: 30px;
+  font-size: 50px;
+}
 #Text {
-  width: 15rem;
+  
+  width: 24rem;
   margin: 1rem;
   font-size: 20px;
 }
@@ -26,6 +31,9 @@
   margin: 1rem;
   padding: 1rem;
   font-size: 25px;
+}
+#TextoName :hover{  
+  background-color: red;
 }
 #FormContainer {
   width: 60%;
@@ -45,21 +53,25 @@
   color: var(--COLOR_LETRAS);
 }
 #ButtonIn {
-  width: 70%;
-  height: 50%;
+  width: 10rem;
+  height: 10rem;
   text-decoration: none;
-  padding: 1rem;
-  margin: 2rem;
+  margin-top: 2rem;
   border-radius: 50px;
   background-color: var(--COLOR_BORDE);
   font-size: 18px;
+  color:white;
   cursor: pointer;
+  border: 4px solid var(--COLOR_BORDEOSCURO);
 }
-#ButtonIn :hover {
-  background-color: red;
-  color: red;
+#ButtonIn:hover {
+  background-color: var(--COLOR_BORDEOSCURO);
 }
 #NavLink {
   text-decoration: none;
   padding: 20px;
+  
+}
+#ConditionText{
+  color: rgba(255, 255, 255, 0.377);
 }

@@ -53,14 +53,14 @@ const Home = () => {
         pauseOnFocusLoss
         draggable
         pauseOnHover={false}
-        theme="light"
+        theme="dark"
       />
       {modalOpen && <Modal toggleModal={() => setModalOpen(!modalOpen)} />}
       <div id={styles.CardContainer}>
         <div id={styles.NabBar}>
           <div id={styles.ContainerName}>
             {userSlice.name ? (
-              <div id="name">Hola {userSlice.name} !</div>
+              <div id={styles.Name}>Hola {userSlice.name} !</div>
             ) : (
               <span>No ingresaste ningun nombre</span>
             )}
@@ -79,7 +79,7 @@ const Home = () => {
             </form>
             <button
               onClick={() => setModalOpen(!modalOpen)}
-              id={styles.ButtonTask}
+              id={styles.ButtonTags}
             >
               Agregar tarea
             </button>

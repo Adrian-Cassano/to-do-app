@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import { setTareas, setClear } from "../../redux/slices/modalSlice";
 
@@ -9,14 +9,13 @@ import Calender from "../../components/Calender/Calender";
 import Tag from "../../components/Tag/Tag";
 
 import "react-toastify/dist/ReactToastify.css";
-import styles from "./ModalEdit.module.css";
+import styles from "../Modal/modal.module.css";
 import moment from "moment";
 
 const ModalEdit = ({
   tagEdit,
   startDateEdit,
   endDateEdit,
-  index,
   titulo,
   descripcion,
   id,
@@ -43,9 +42,9 @@ const ModalEdit = ({
     } else if (description === "") {
       toast.warn("Ingrese una descripcion");
     } else if (title.length >= 20) {
-      toast.warn("Exediste los caracteres en el titulo");
+      toast.warn("El maximo es de 20 carácteres en el titulo");
     } else if (description.length >= 256) {
-      toast.warn("Exediste los caracteres en el titulo");
+      toast.warn("El maximo es de 256 carácteres en la descripcion");
     } else if (startDate === null || endDate === null) {
       toast.warn("Ingrese una fecha de valida");
     } else if (dateStart === dateEnd) {
@@ -70,7 +69,7 @@ const ModalEdit = ({
         pauseOnFocusLoss
         draggable
         pauseOnHover={false}
-        theme="light"
+        theme="dark"
       />
       <div id={styles.Modal}>
         <div id={styles.Titulo}>Nueva Tarea</div>
@@ -78,45 +77,50 @@ const ModalEdit = ({
           x
         </button>
         <div id={styles.FormContainer}>
-          <form onSubmit={handleSubmit} method="post">
-            <div>
-              Titulo:
-              <input
-                type="text"
-                placeholder="Titulo"
-                defaultValue={title}
-                setvalue={setTitle}
-              ></input>
-            </div>
-            <div>
-              Descripcion:{" "}
-              <input
-                type="text"
-                placeholder="Descripcion (Max 256)"
-                defaultValue={description}
-                setvalue={setDescription}
-              ></input>
-            </div>
+          <form onSubmit={handleSubmit} id={styles.Form} method="post">
+            <div>Titulo</div>
+            <input
+              id={styles.InputTitle}
+              defaultValue={title}
+              setvalue={setTitle}
+              placeholder="Ingresar titulo"
+              maxlength="20"
+            />
+            <div>Descripcion</div>
+            <input
+              id={styles.InputDescription}
+              type="text"
+              placeholder="Descripcion (Max 256)"
+              maxlength="256"
+              defaultValue={description}
+              setvalue={setDescription}
+            />
             <div id={styles.ContainerCalendar}>
               <div>
-                Fecha de inicio:
-                <Calender value={startDate} setValue={setStartDate} />
+                Fecha de inicio
+                <Calender
+                  id={styles.CalenderStartDate}
+                  value={startDate}
+                  setValue={setStartDate}
+                />
+              </div>
+              <div id={styles.InputTitle}>
+                Fecha de finalizacion
+                <Calender
+                  value={endDate}
+                  setValue={setEndDate}
+                  firstDate={startDate}
+                />
               </div>
               <div>
-                Fecha de finalizacion:
-                <Calender value={endDate} setValue={setEndDate} />
-              </div>
-              <div>
-                Agregar tag:
+                Tag
                 <div id={styles.Tag}>
                   <Tag value={tag} setValue={setTag} />
                 </div>
               </div>
-              <div id={styles.ContainerButton}>
-                <button type="submit" name="submit">
-                  Aceptar
-                </button>
-              </div>
+              <button id={styles.ContainerButton} type="submit" name="submit">
+                Aceptar
+              </button>
             </div>
           </form>
         </div>

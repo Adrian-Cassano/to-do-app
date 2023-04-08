@@ -50,32 +50,30 @@ const CardTask = ({
             <div>{title}</div>
             <div id={styles.NavBarButton}>
               <button
-                id={styles.ButtonDelet}
+                id={styles.ButtonTask}
                 onClick={() => dispatch(setClear(id))}
               >
-                Eliminar Tarea
+                Eliminar
               </button>
               <button
                 onClick={() => setModalEditOpen(!modalEditOpen)}
                 id={styles.ButtonTask}
               >
-                Editar tarea
+                Editar
               </button>
             </div>
           </div>
           <div id={styles.DescriptionContainer}>
-            <div>{description}</div>
+            <div>{description} </div>
           </div>
         </div>
         <div id={styles.InfoContainer}>
           <div id={styles.DateContainer}>
             <div>Fecha inicial: {startDate}</div>
             {endDate < hoy && (
-              <div id={styles.FechaAtrasada}>
-                Fecha atrasada: {endDate}
-              </div>
+              <div id={styles.FechaAtrasada}>Fecha limite: {endDate}</div>
             )}
-            {endDate >= hoy && <div>Fecha limite: {endDate}</div>}
+            {endDate >= hoy && <div>Fecha limite:{endDate}</div>}
             <div>Tag: {tag}</div>
           </div>
           <div id={styles.ButtonMoveCardContainer}>
@@ -84,7 +82,7 @@ const CardTask = ({
                 id={styles.ButtonMove}
                 onClick={() => dispatch(setMoveDown(id))}
               >
-                Mover abajo
+                ↓
               </button>
             )}
             {largoArray > 1 && !isFirstCard && (
@@ -92,7 +90,7 @@ const CardTask = ({
                 id={styles.ButtonMove}
                 onClick={() => dispatch(setMoveUp(id))}
               >
-                Mover arriba
+                ↑
               </button>
             )}
           </div>

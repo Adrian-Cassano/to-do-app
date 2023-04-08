@@ -19,7 +19,7 @@ export default function Modal(props) {
   const tagSlice = useSelector((store) => store.tagSlice);
 
   const [startDate, setStartDate] = React.useState(new Date());
-  const [endDate, setEndDate] = React.useState(new Date());
+  const [endDate, setEndDate] = React.useState();
   const [tag, setTag] = React.useState(tagSlice.tags[0].tag);
 
   const handleSubmit = (e) => {
@@ -35,9 +35,9 @@ export default function Modal(props) {
     } else if (description === "") {
       toast.warn("Ingrese una descripcion");
     } else if (title.length >= 20) {
-      toast.warn("Exediste los carácteres en el titulo");
+      toast.warn("El maximo es de 20 carácteres en el titulo");
     } else if (description.length >= 256) {
-      toast.warn("Exediste los carácteres en el titulo");
+      toast.warn("El maximo es de 256 carácteres en la descripcion");
     } else if (startDate === null || endDate === null) {
       toast.warn("Ingrese una fecha de valida");
     } else if (dateStart === dateEnd) {
@@ -62,9 +62,8 @@ export default function Modal(props) {
         pauseOnFocusLoss
         draggable
         pauseOnHover={false}
-        theme="light"
+        theme="dark"
       />
-
       <div id={styles.Modal}>
         <div id={styles.Titulo}>Nueva Tarea</div>
         <button onClick={() => props.toggleModal()} id={styles.ButtonModal}>
@@ -73,42 +72,40 @@ export default function Modal(props) {
         <div id={styles.FormContainer}>
           <form onSubmit={handleSubmit} id={styles.Form} method="post">
             <div>
-              Titulo:
-              <input id={styles.InputTitle} placeholder="Ingresar titulo" />
+              Titulo
             </div>
-            <div>
-              Descripcion:{" "}
-              <input
+            <input id={styles.InputTitle}  placeholder="Ingresar titulo" maxlength="20" />
+            <div >
+              Descripcion
+            </div>
+            <input
                 id={styles.InputDescription}
-                type="text"
+                type="text" 
                 placeholder="Descripcion (Max 256)"
+                maxlength="256"
               />
-            </div>
             <div id={styles.ContainerCalendar}>
               <div>
-                Fecha de inicio:
+                Fecha de inicio
                 <Calender
                   id={styles.CalenderStartDate}
                   value={startDate}
                   setValue={setStartDate}
                 />
               </div>
-
-              <div>
-                Fecha de finalizacion:
-                <Calender value={endDate} setValue={setEndDate} />
+              <div id={styles.InputTitle}>
+                Fecha de finalizacion
+                <Calender value={endDate} setValue={setEndDate} firstDate={startDate} />
               </div>
               <div>
-                Agregar tag :
+                Tag 
                 <div id={styles.Tag}>
                   <Tag value={tag} setValue={setTag} />
                 </div>
               </div>
-              <div id={styles.ContainerButton}>
-                <button type="submit" name="submit">
-                  Aceptar
-                </button>
-              </div>
+              <button id={styles.ContainerButton} type="submit" name="submit">
+                Aceptar
+              </button>
             </div>
           </form>
         </div>

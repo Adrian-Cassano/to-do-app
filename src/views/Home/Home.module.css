@@ -5,18 +5,16 @@
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  color: var(--COLOR_LETRAS);
+  color: black;
 }
 #CardContainer {
   width: 50rem;
   height: 52rem;
   border-radius: 20px;
-  background-color: var(--COLOR_FONDO);
-  border: 1rem solid var(--COLOR_BORDE);
 }
 #NabBar {
-  border: 1rem solid rgb(0, 0, 135);
   display: flex;
+  border-bottom: 10px double  ;
 }
 #ContainerName {
   width: 30rem;
@@ -25,7 +23,7 @@
   align-items: center;
 }
 #Name {
-  font-size: 50px;
+  font-size: 30px;
 }
 #SubTitle {
   font-size: 20px;
@@ -37,28 +35,19 @@
   flex-direction: column;
   align-items: flex-end;
 }
-#ButtonTask {
-  background-color: var(--COLOR_BORDE);
-  border-radius: 15px;
-  text-decoration: none;
-  font-size: 20px;
-  width: 10rem;
-  height: 2rem;
-  cursor: pointer;
-  border: 5px solid var(--COLOR_BORDEOSCURO);
-  color: var(--COLOR_LETRAS);
-}
 #ButtonTags {
   background-color: var(--COLOR_BORDE);
   border-radius: 15px;
-  border: 5px solid var(--COLOR_BORDEOSCURO);
+  border: 4px solid var(--COLOR_BORDEOSCURO);
   text-decoration: none;
   font-size: 20px;
-  height: 2rem;
   width: 10rem;
-  padding: 2px;
+  margin: 5px;
   cursor: pointer;
   color: var(--COLOR_LETRAS);
+}
+#ButtonTags:hover{
+  background-color: var(--COLOR_BORDEOSCURO);
 }
 #InputTag {
   width: 7rem;
@@ -66,9 +55,8 @@
   text-decoration: none;
   border-radius: 20px 10px;
   background-color: var(--COLOR_FONDO);
-  color: var(--COLOR_LETRAS);
+   color: var(--COLOR_LETRAS);
 }
-
 #ContainerTasks {
   width: 50rem;
   height: 45rem;
@@ -76,4 +64,7 @@
   flex-direction: column;
   align-items: center;
   overflow: auto;
+  background-color: var(--COLOR_FONDO);
+  border-radius: 1rem;
+  margin-top: 20px;
 }
