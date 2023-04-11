@@ -1,0 +1,78 @@
+#ModalContainer {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: var(--COLOR_LETRAS);
+  text-decoration: none;
+  color: var(--COLOR_LETRAS);
+}
+#Modal {
+  width: 20rem;
+  margin: auto;
+  background-color: var(--COLOR_BORDEOSCURO);
+  box-shadow: 1px 7px 25px rgba(0, 0, 0, 0.6);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: solid 10px var(--COLOR_BORDEOSCURO);
+  border-radius: 10px;
+}
+#Titulo {
+  width: 100%;
+  height: 3rem;
+  border: solid 10px var(--COLOR_BORDEOSCURO);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  background-color: var(--COLOR_BORDEOSCURO);
+}
+#ButtonModal {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: black;
+  font-size: 15px;
+  cursor: pointer;
+}
+#InputTags {
+  
+  background-color: var(--COLOR_FONDO);
+  border-radius: 10px;
+  color: var(--COLOR_LETRAS);
+}
+#ButtonAdd{
+  background-color: var(--COLOR_BORDE);
+  border-radius: 10px;
+  color: var(--COLOR_LETRAS);
+  cursor: pointer;
+  margin-left: 10px ;
+}
+#ButtonAdd:hover{
+  background-color: var(--COLOR_BORDEOSCURO);
+}
+#ButtonTag{
+  background-color: var(--COLOR_BORDE);
+  border-radius: 8px;
+  cursor: pointer;
+}
+#ButtonTag:hover{
+  background-color: var(--COLOR_BORDEOSCURO);
+
+}
+#TagsContainer {
+  margin-top: 1rem;
+  width: 13rem;
+  height: 10rem;
+  background-color: var(--COLOR_FONDO);
+  overflow: auto;
+  border-radius: 10px;
+}

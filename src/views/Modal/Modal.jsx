@@ -34,9 +34,9 @@ export default function Modal(props) {
       toast.warn("Ingrese un titulo");
     } else if (description === "") {
       toast.warn("Ingrese una descripcion");
-    } else if (title.length >= 20) {
+    } else if (title.length > 20) {
       toast.warn("El maximo es de 20 carácteres en el titulo");
-    } else if (description.length >= 256) {
+    } else if (description.length > 256) {
       toast.warn("El maximo es de 256 carácteres en la descripcion");
     } else if (startDate === null || endDate === null) {
       toast.warn("Ingrese una fecha de valida");
@@ -74,15 +74,15 @@ export default function Modal(props) {
             <div>
               Titulo
             </div>
-            <input id={styles.InputTitle}  placeholder="Ingresar titulo" maxlength="20" />
+            <input id={styles.InputTitle}  placeholder="Ingresar titulo" maxLength="20" />
             <div >
               Descripcion
             </div>
-            <input
+            <textarea
                 id={styles.InputDescription}
                 type="text" 
                 placeholder="Descripcion (Max 256)"
-                maxlength="256"
+                maxLength="256"
               />
             <div id={styles.ContainerCalendar}>
               <div>

@@ -53,7 +53,7 @@ const Welcome = () => {
         </div>
         <div id={styles.TextoName}>Ingresa tu nombre</div>
         <form id={styles.FormContainer} onSubmit={handleSubmit}>
-          <input id={styles.InputName} maxlength="18" type="text" name="nombre" />
+          <input id={styles.InputName} maxLength="18" type="text" name="nombre" />
           <div id={styles.ConditionText}>El usuario debe tener entre 4 y 18 caracteres</div>
           <button id={styles.ButtonIn} type="submit" name="submit">
             Ingresar

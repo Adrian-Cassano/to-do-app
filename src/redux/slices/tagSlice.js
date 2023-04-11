@@ -3,11 +3,11 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   tags: [
     {
-      tag: "casa",
+      tag: "Casa",
       id: 0,
     },
     {
-      tag: "trabajo",
+      tag: "Trabajo",
       id: 1,
     },
   ],
@@ -30,10 +30,16 @@ export const tagSlice = createSlice({
       ];
       state.ultimoId++;
     },
+    setTagClear: (state, action) => {
+      const newArray = state.tags.filter((tag) => {
+        return action.payload !== tag.id;
+      });
+      state.tags = newArray;
+    },
   },
 });
 
-export const { setTag } = tagSlice.actions;
+export const { setTag, setTagClear } = tagSlice.actions;
 
 export const stateName = (state) => state;
 
