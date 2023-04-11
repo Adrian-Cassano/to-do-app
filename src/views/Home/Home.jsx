@@ -8,29 +8,21 @@ import { toast, ToastContainer } from "react-toastify";
 
 import Modal from "../Modal/Modal";
 import CardTask from "../../components/CardTask/CardTask";
+import ModalTags from "../ModalTags/ModalTags";
 
 import "react-toastify/dist/ReactToastify.css";
 import styles from "./Home.module.css";
 
 const Home = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  
   const modalSlice = useSelector((store) => store.modalSlice);
   const userSlice = useSelector((store) => store.userSlice);
 
   const [modalOpen, setModalOpen] = useState(false);
+  const [modalTagsOpen, setModalTagsOpen] = useState(false);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const tag = e.target[0].value;
-    if (tag === "") {
-      toast.warn("Ingresa un tag");
-    } else if (tag <= 1) {
-      toast.warn("Maximo 12 carácteres");
-    } else {
-      dispatch(setTag({ tag }));
-    }
-  };
+  
 
   useEffect(() => {
     if (!userSlice.name) {
@@ -56,6 +48,9 @@ const Home = () => {
         theme="dark"
       />
       {modalOpen && <Modal toggleModal={() => setModalOpen(!modalOpen)} />}
+      {modalTagsOpen && (
+        <ModalTags toggleModal={() => setModalTagsOpen(!modalTagsOpen)} />
+      )}
       <div id={styles.CardContainer}>
         <div id={styles.NabBar}>
           <div id={styles.ContainerName}>
@@ -67,16 +62,13 @@ const Home = () => {
             <div id={styles.SubTitle}>Aca podras manejar tus tareas!</div>
           </div>
           <div id={styles.ContainerButton}>
-            <form onSubmit={handleSubmit}>
-              <input
-                id={styles.InputTag}
-                type="text"
-                placeholder="Escibir Tag nuevo"
-              />
-              <button id={styles.ButtonTags} type="submit">
-                Agregar tags
-              </button>
-            </form>
+            <button
+              id={styles.ButtonTags}
+              onClick={() => setModalTagsOpen(!modalTagsOpen)}
+            >
+              Agregar tags
+            </button>
+
             <button
               onClick={() => setModalOpen(!modalOpen)}
               id={styles.ButtonTags}

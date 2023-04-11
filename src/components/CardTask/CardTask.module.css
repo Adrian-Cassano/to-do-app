@@ -31,7 +31,7 @@
   height: 6rem;
   margin: 1rem;
   font-stretch: 100%;
-  overflow: scroll;
+  word-break: break-all;
 }
 #InfoContainer {
   width: 100%;
