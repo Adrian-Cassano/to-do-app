@@ -16,6 +16,17 @@
   display: flex;
   border-bottom: 10px double;
 }
+#ButtonDeletAll{
+  text-decoration: none;
+  background-color: var(--COLOR_BORDE);
+  border: 4px solid var(--COLOR_BORDEOSCURO);
+  border-radius: 15px;
+  color: var(--COLOR_LETRAS);
+  cursor: pointer;
+}
+#ButtonDeletAll:hover{
+  background-color: var(--COLOR_BORDEOSCURO);
+}
 #ContainerName {
   width: 30rem;
   display: flex;

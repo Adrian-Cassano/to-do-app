@@ -71,7 +71,7 @@ const Home = () => {
           </div>
           <div id={styles.ContainerButton}>
             <form onSubmit={deleteAll}>
-              <button type="submit">Eliminar todo</button>
+              <button id={styles.ButtonDeletAll} type="submit">Eliminar perfil</button>
             </form>
             <button
               id={styles.ButtonTags}
