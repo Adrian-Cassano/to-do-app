@@ -8,12 +8,12 @@
   top: 0;
   left: 0;
   background-color: rgba(0, 0, 0, 0.5);
-  color:var(--COLOR_LETRAS);
+  color: var(--COLOR_LETRAS);
 }
 #Modal {
   width: 25rem;
   margin: auto;
-  background-color:var(--COLOR_BORDEOSCURO) ;
+  background-color: var(--COLOR_BORDEOSCURO);
   box-shadow: 1px 7px 25px rgba(0, 0, 0, 0.6);
   position: relative;
   display: flex;
@@ -32,8 +32,7 @@
   justify-content: center;
   align-items: center;
   font-size: 30px;
-  background-color:var(--COLOR_BORDEOSCURO) ;
-  
+  background-color: var(--COLOR_BORDEOSCURO);
 }
 #ButtonModal {
   position: absolute;
@@ -52,11 +51,10 @@
   display: flex;
   border-radius: 20px;
 }
-#InputTitle{
+#InputTitle {
   width: 20rem;
-  
 }
-#InputDescription{
+#InputDescription {
   width: 20rem;
   height: 5rem;
   max-width: 20rem;
@@ -64,7 +62,6 @@
 }
 #Form {
   margin: 25px;
-  
 }
 #ContainerCalendar {
   height: 3rem;
@@ -85,7 +82,7 @@
 }
 #ContainerButton {
   width: 18rem;
-  padding:1rem;
+  padding: 1rem;
   display: flex;
   justify-content: center;
   margin: 2rem;
@@ -93,9 +90,9 @@
   text-decoration: none;
   border-radius: 10px;
   cursor: pointer;
-  color:var(--COLOR_LETRAS);
+  color: var(--COLOR_LETRAS);
 }
-#ContainerButton:hover{
+#ContainerButton:hover {
   background-color: var(--COLOR_BORDEOSCURO);
 }
 #Tag {
