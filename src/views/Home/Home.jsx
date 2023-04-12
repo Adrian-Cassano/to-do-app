@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { persistStore } from "redux-persist";
 import store from "../../redux/store/store";
 
 import { useNavigate } from "react-router-dom";
-import { toast, ToastContainer } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 
 import { stateModal } from "../../redux/slices/modalSlice";
 import { stateName } from "../../redux/slices/userSlice";
@@ -23,7 +23,7 @@ const Home = () => {
 
   const deleteAll = () => {
     persistor.purge();
-    navigate("/Home").reload();
+    navigate("/").reload();
   };
 
   const modalSlice = useSelector(stateModal);
@@ -32,13 +32,7 @@ const Home = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [modalTagsOpen, setModalTagsOpen] = useState(false);
 
-  useEffect(() => {
-    if (!userSlice) {
-      navigate("/");
-      toast.warn("Por favor vuelva a ingresar su nombre");
-    }
-    return () => {};
-  }, [userSlice]);
+  
 
   return (
     <div id={styles.MasterContainer}>
