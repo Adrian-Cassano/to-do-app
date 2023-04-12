@@ -64,7 +64,7 @@ const CardTask = ({
             </div>
           </div>
           <div id={styles.DescriptionContainer}>
-            <div >{description} </div>
+            <div>{description} </div>
           </div>
         </div>
         <div id={styles.InfoContainer}>

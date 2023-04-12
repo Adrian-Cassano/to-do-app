@@ -62,6 +62,6 @@ export const modalSlice = createSlice({
 export const { setTareas, setClear, setMoveDown, setMoveUp } =
   modalSlice.actions;
 
-export const statemodal = (state) => state;
+export const stateModal = (state) => state.modalState;
 
 export default modalSlice.reducer;

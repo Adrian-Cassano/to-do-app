@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { setTareas } from "../../redux/slices/modalSlice";
+import { stateTag } from "../../redux/slices/tagSlice";
 
 import { toast, ToastContainer } from "react-toastify";
 
@@ -16,7 +17,7 @@ import styles from "./modal.module.css";
 export default function Modal(props) {
   const dispatch = useDispatch();
 
-  const tagSlice = useSelector((store) => store.tagSlice);
+  const tagSlice = useSelector(stateTag);
 
   const [startDate, setStartDate] = React.useState(new Date());
   const [endDate, setEndDate] = React.useState();
@@ -71,19 +72,19 @@ export default function Modal(props) {
         </button>
         <div id={styles.FormContainer}>
           <form onSubmit={handleSubmit} id={styles.Form} method="post">
-            <div>
-              Titulo
-            </div>
-            <input id={styles.InputTitle}  placeholder="Ingresar titulo" maxLength="20" />
-            <div >
-              Descripcion
-            </div>
+            <div>Titulo</div>
+            <input
+              id={styles.InputTitle}
+              placeholder="Ingresar titulo"
+              maxLength="20"
+            />
+            <div>Descripcion</div>
             <textarea
-                id={styles.InputDescription}
-                type="text" 
-                placeholder="Descripcion (Max 256)"
-                maxLength="256"
-              />
+              id={styles.InputDescription}
+              type="text"
+              placeholder="Descripcion (Max 256)"
+              maxLength="256"
+            />
             <div id={styles.ContainerCalendar}>
               <div>
                 Fecha de inicio
@@ -95,10 +96,14 @@ export default function Modal(props) {
               </div>
               <div id={styles.InputTitle}>
                 Fecha de finalizacion
-                <Calender value={endDate} setValue={setEndDate} firstDate={startDate} />
+                <Calender
+                  value={endDate}
+                  setValue={setEndDate}
+                  firstDate={startDate}
+                />
               </div>
               <div>
-                Tag 
+                Tag
                 <div id={styles.Tag}>
                   <Tag value={tag} setValue={setTag} />
                 </div>

@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-
-import { setTag } from "../../redux/slices/tagSlice";
+import { useSelector } from "react-redux";
+import { persistStore } from "redux-persist";
+import store from "../../redux/store/store";
 
 import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
+
+import { stateModal } from "../../redux/slices/modalSlice";
+import { stateName } from "../../redux/slices/userSlice";
 
 import Modal from "../Modal/Modal";
 import CardTask from "../../components/CardTask/CardTask";
@@ -15,17 +18,22 @@ import styles from "./Home.module.css";
 
 const Home = () => {
   const navigate = useNavigate();
-  
-  const modalSlice = useSelector((store) => store.modalSlice);
-  const userSlice = useSelector((store) => store.userSlice);
+
+  const persistor = persistStore(store);
+
+  const deleteAll = () => {
+    persistor.purge();
+    navigate("/Home").reload();
+  };
+
+  const modalSlice = useSelector(stateModal);
+  const userSlice = useSelector(stateName);
 
   const [modalOpen, setModalOpen] = useState(false);
   const [modalTagsOpen, setModalTagsOpen] = useState(false);
 
-  
-
   useEffect(() => {
-    if (!userSlice.name) {
+    if (!userSlice) {
       navigate("/");
       toast.warn("Por favor vuelva a ingresar su nombre");
     }
@@ -54,14 +62,17 @@ const Home = () => {
       <div id={styles.CardContainer}>
         <div id={styles.NabBar}>
           <div id={styles.ContainerName}>
-            {userSlice.name ? (
-              <div id={styles.Name}>Hola {userSlice.name} !</div>
+            {userSlice ? (
+              <div id={styles.Name}>Hola {userSlice} !</div>
             ) : (
               <span>No ingresaste ningun nombre</span>
             )}
             <div id={styles.SubTitle}>Aca podras manejar tus tareas!</div>
           </div>
           <div id={styles.ContainerButton}>
+            <form onSubmit={deleteAll}>
+              <button type="submit">Eliminar todo</button>
+            </form>
             <button
               id={styles.ButtonTags}
               onClick={() => setModalTagsOpen(!modalTagsOpen)}
