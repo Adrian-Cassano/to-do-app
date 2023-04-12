@@ -14,7 +14,7 @@
 }
 #NabBar {
   display: flex;
-  border-bottom: 10px double  ;
+  border-bottom: 10px double;
 }
 #ContainerName {
   width: 30rem;
@@ -46,7 +46,7 @@
   cursor: pointer;
   color: var(--COLOR_LETRAS);
 }
-#ButtonTags:hover{
+#ButtonTags:hover {
   background-color: var(--COLOR_BORDEOSCURO);
 }
 #InputTag {
@@ -55,7 +55,7 @@
   text-decoration: none;
   border-radius: 20px 10px;
   background-color: var(--COLOR_FONDO);
-   color: var(--COLOR_LETRAS);
+  color: var(--COLOR_LETRAS);
 }
 #ContainerTasks {
   width: 50rem;

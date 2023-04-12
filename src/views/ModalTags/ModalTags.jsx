@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { toast, ToastContainer } from "react-toastify";
 
 import { setTag, setTagClear } from "../../redux/slices/tagSlice";
+import { stateTag } from "../../redux/slices/tagSlice";
 
 import styles from "./ModalTags.module.css";
 import "react-toastify/dist/ReactToastify.css";
@@ -11,9 +12,9 @@ import "react-toastify/dist/ReactToastify.css";
 const ModalTags = (props) => {
   const dispatch = useDispatch();
 
-  const tagSlice = useSelector((store) => store.tagSlice);
+  const tagSlice = useSelector(stateTag);
 
-  const [inputText, setInputText] = useState("")
+  const [inputText, setInputText] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -25,10 +26,8 @@ const ModalTags = (props) => {
     } else {
       dispatch(setTag({ tag }));
     }
-    setInputText("")
-    
+    setInputText("");
   };
-  
 
   return (
     <div id={styles.ModalContainer}>
@@ -54,7 +53,7 @@ const ModalTags = (props) => {
           <form onSubmit={handleSubmit}>
             <input
               value={inputText}
-              onChange={(e)=>setInputText(e.target.value)}
+              onChange={(e) => setInputText(e.target.value)}
               id={styles.InputTags}
               maxLength="20"
               name="inputTags"
@@ -67,7 +66,10 @@ const ModalTags = (props) => {
             {tagSlice?.tags?.map((tag, index) => {
               return (
                 <div key={index + tag.id}>
-                  <button id={styles.ButtonTag}onClick={() => dispatch(setTagClear(tag.id))}>
+                  <button
+                    id={styles.ButtonTag}
+                    onClick={() => dispatch(setTagClear(tag.id))}
+                  >
                     x
                   </button>
                   {tag.tag}

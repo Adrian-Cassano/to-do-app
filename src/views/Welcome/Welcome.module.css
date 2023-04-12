@@ -17,12 +17,11 @@
   border: 5px solid var(--COLOR_BORDE);
   border-radius: 20px;
 }
-#Title{
+#Title {
   margin: 30px;
   font-size: 50px;
 }
 #Text {
-  
   width: 24rem;
   margin: 1rem;
   font-size: 20px;
@@ -32,7 +31,7 @@
   padding: 1rem;
   font-size: 25px;
 }
-#TextoName :hover{  
+#TextoName :hover {
   background-color: red;
 }
 #FormContainer {
@@ -60,7 +59,7 @@
   border-radius: 50px;
   background-color: var(--COLOR_BORDE);
   font-size: 18px;
-  color:white;
+  color: white;
   cursor: pointer;
   border: 4px solid var(--COLOR_BORDEOSCURO);
 }
@@ -70,8 +69,7 @@
 #NavLink {
   text-decoration: none;
   padding: 20px;
-  
 }
-#ConditionText{
+#ConditionText {
   color: rgba(255, 255, 255, 0.377);
 }

@@ -5,7 +5,6 @@
   margin: 1rem;
   display: flex;
   color: var(--COLOR_LETRAS);
-  
 }
 #TextContainer {
   width: 70%;
@@ -39,7 +38,6 @@
   border-left: 10px double var(--COLOR_BORDE);
   display: flex;
   flex-direction: column-reverse;
-  
 }
 #DateContainer {
   width: 100%;
@@ -48,7 +46,7 @@
 #FechaAtrasada {
   color: red;
 }
-#ButtonMoveCardContainer  {
+#ButtonMoveCardContainer {
   border-bottom: 10px double var(--COLOR_BORDE);
   width: 100%;
   display: flex;
@@ -58,27 +56,25 @@
   text-align: center;
   margin: 10px 0px 10px 0px;
 }
-#ButtonMove{
-  background-color:var(--COLOR_BORDE);
-  border-radius: 10px;
-  border: 2px solid var(--COLOR_BORDEOSCURO);
-  cursor: pointer;
-  color: var(--COLOR_LETRAS);
-  font-size: 15px;
-  
-}
-#ButtonMove:hover{
-  background-color:var(--COLOR_BORDEOSCURO);
-}
-#ButtonTask{
-  background-color:var(--COLOR_BORDE);
+#ButtonMove {
+  background-color: var(--COLOR_BORDE);
   border-radius: 10px;
   border: 2px solid var(--COLOR_BORDEOSCURO);
   cursor: pointer;
   color: var(--COLOR_LETRAS);
   font-size: 15px;
 }
-#ButtonTask:hover{
-  background-color:var(--COLOR_BORDEOSCURO);
+#ButtonMove:hover {
+  background-color: var(--COLOR_BORDEOSCURO);
 }
-
+#ButtonTask {
+  background-color: var(--COLOR_BORDE);
+  border-radius: 10px;
+  border: 2px solid var(--COLOR_BORDEOSCURO);
+  cursor: pointer;
+  color: var(--COLOR_LETRAS);
+  font-size: 15px;
+}
+#ButtonTask:hover {
+  background-color: var(--COLOR_BORDEOSCURO);
+}

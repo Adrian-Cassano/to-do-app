@@ -44,29 +44,27 @@
   cursor: pointer;
 }
 #InputTags {
-  
   background-color: var(--COLOR_FONDO);
   border-radius: 10px;
   color: var(--COLOR_LETRAS);
 }
-#ButtonAdd{
+#ButtonAdd {
   background-color: var(--COLOR_BORDE);
   border-radius: 10px;
   color: var(--COLOR_LETRAS);
   cursor: pointer;
-  margin-left: 10px ;
+  margin-left: 10px;
 }
-#ButtonAdd:hover{
+#ButtonAdd:hover {
   background-color: var(--COLOR_BORDEOSCURO);
 }
-#ButtonTag{
+#ButtonTag {
   background-color: var(--COLOR_BORDE);
   border-radius: 8px;
   cursor: pointer;
 }
-#ButtonTag:hover{
+#ButtonTag:hover {
   background-color: var(--COLOR_BORDEOSCURO);
-
 }
 #TagsContainer {
   margin-top: 1rem;

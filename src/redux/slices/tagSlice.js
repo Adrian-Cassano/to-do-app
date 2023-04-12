@@ -41,6 +41,6 @@ export const tagSlice = createSlice({
 
 export const { setTag, setTagClear } = tagSlice.actions;
 
-export const stateName = (state) => state;
+export const stateTag = (state) => state.tagState;
 
 export default tagSlice.reducer;

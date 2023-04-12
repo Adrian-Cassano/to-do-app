@@ -1,4 +1,4 @@
-*{
+* {
   margin: 0px;
 }
 body {
@@ -9,10 +9,10 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-:root{
+:root {
   /* COLORES */
   --COLOR_BORDEOSCURO: rgb(0, 0, 135);
   --COLOR_BORDE: rgb(0, 89, 255);
