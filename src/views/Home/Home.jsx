@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { persistStore } from "redux-persist";
 import store from "../../redux/store/store";
@@ -23,7 +23,8 @@ const Home = () => {
 
   const deleteAll = () => {
     persistor.purge();
-    navigate("/").reload();
+     navigate("/");
+    window.location.assign("/")
   };
 
   const modalSlice = useSelector(stateModal);
@@ -33,7 +34,6 @@ const Home = () => {
   const [modalTagsOpen, setModalTagsOpen] = useState(false);
 
   
-
   return (
     <div id={styles.MasterContainer}>
       <ToastContainer
@@ -65,7 +65,9 @@ const Home = () => {
           </div>
           <div id={styles.ContainerButton}>
             <form onSubmit={deleteAll}>
-              <button id={styles.ButtonDeletAll} type="submit">Eliminar perfil</button>
+              <button id={styles.ButtonDeletAll} type="submit">
+                Eliminar perfil
+              </button>
             </form>
             <button
               id={styles.ButtonTags}
