@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { persistStore } from "redux-persist";
 import store from "../../redux/store/store";
