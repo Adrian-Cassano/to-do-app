@@ -72,7 +72,7 @@ const ModalEdit = ({
         theme="dark"
       />
       <div id={styles.Modal}>
-        <div id={styles.Titulo}>Nueva Tarea</div>
+        <div id={styles.Titulo}>Editar tarea</div>
         <button onClick={() => toggleModal()} id={styles.ButtonModal}>
           x
         </button>
