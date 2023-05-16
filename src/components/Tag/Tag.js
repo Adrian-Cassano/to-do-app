@@ -5,7 +5,7 @@ import { stateTag } from "../../redux/slices/tagSlice";
 
 import FormControl from "@mui/material/FormControl";
 
-export default function Tag({ value, setValue }) {
+export default function Tag({ value, setvalue }) {
   const tagSlice = useSelector(stateTag);
 
   return (
@@ -13,7 +13,7 @@ export default function Tag({ value, setValue }) {
       <select
         selected={value}
         onChange={(e) => {
-          setValue(e.target.value);
+          setvalue(e.target.value);
         }}
         defaultValue="casa"
       >

@@ -19,11 +19,11 @@ const Welcome = () => {
     const largo = e.target[0].value.length;
     const name = e.target[0].value;
     if (name === "") {
-      toast.warn("Completa tu nombre");
+      toast.warn("Complete your name");
     } else if (largo < 4) {
-      toast.warn("Minimo 4 carácteres");
+      toast.warn("Min 4 characters");
     } else if (largo >= 18) {
-      toast.warn("Maximo 18 carácteres");
+      toast.warn("Max 18 characters");
     } else {
       dispatch(setName(name));
       navigate("/Home");
@@ -48,22 +48,22 @@ const Welcome = () => {
       <h1 id={styles.Title}>TO-DO-APP</h1>
       <div id={styles.LogInContainer}>
         <div id={styles.Text}>
-          ¡Bienvenido a TO-DO-APP! En esta aplicacion vas apoder manejar tus
-          tareas diarias!
+        Welcome to TO-DO-APP! In this application you will be able to manage your
+          daily tasks!
         </div>
-        <div id={styles.TextoName}>Ingresa tu nombre</div>
+        <div id={styles.TextoName}>Enter your name</div>
         <form id={styles.FormContainer} onSubmit={handleSubmit}>
           <input
             id={styles.InputName}
-            maxLength="18"
+            maxLength="17"
             type="text"
             name="nombre"
           />
           <div id={styles.ConditionText}>
-            El usuario debe tener entre 4 y 18 caracteres
+          The user must be between 4 and 18 characters
           </div>
           <button id={styles.ButtonIn} type="submit" name="submit">
-            Ingresar
+            Login
           </button>
         </form>
       </div>

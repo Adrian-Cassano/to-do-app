@@ -53,13 +53,13 @@ const CardTask = ({
                 id={styles.ButtonTask}
                 onClick={() => dispatch(setClear(id))}
               >
-                Eliminar
+                Delet
               </button>
               <button
                 onClick={() => setModalEditOpen(!modalEditOpen)}
                 id={styles.ButtonTask}
               >
-                Editar
+                Edit
               </button>
             </div>
           </div>
@@ -69,11 +69,11 @@ const CardTask = ({
         </div>
         <div id={styles.InfoContainer}>
           <div id={styles.DateContainer}>
-            <div>Fecha inicial: {startDate}</div>
+            <div>Start date: {startDate}</div>
             {endDate < hoy && (
-              <div id={styles.FechaAtrasada}>Fecha limite: {endDate}</div>
+              <div id={styles.FechaAtrasada}>Deadline: {endDate}</div>
             )}
-            {endDate >= hoy && <div>Fecha limite:{endDate}</div>}
+            {endDate >= hoy && <div>Deadline:{endDate}</div>}
             <div>Tag: {tag}</div>
           </div>
           <div id={styles.ButtonMoveCardContainer}>
