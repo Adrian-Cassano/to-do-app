@@ -31,18 +31,36 @@ export default function Modal(props) {
     const title = e.target[0].value;
     const description = e.target[1].value;
 
+    const yearStart = moment(startDate).format("YYYY");
+    const yearEnd = moment(endDate).format("YYYY");
+
+    const monthStart = moment(startDate).format("MM");
+    const monthEnd = moment(endDate).format("MM");
+
+    const dayStart = moment(startDate).format("DD");
+    const dayEnd = moment(endDate).format("DD");
+
     if (title === "") {
-      toast.warn("Ingrese un titulo");
+      toast.warn("Enter a title");
     } else if (description === "") {
-      toast.warn("Ingrese una descripcion");
+      toast.warn("Enter a description");
     } else if (title.length > 20) {
-      toast.warn("El maximo es de 20 carácteres en el titulo");
+      toast.warn("Maximum of 20 characters in the title");
     } else if (description.length > 256) {
-      toast.warn("El maximo es de 256 carácteres en la descripcion");
+      toast.warn("Maximum 256 characters in the description");
     } else if (startDate === null || endDate === null) {
-      toast.warn("Ingrese una fecha de valida");
+      toast.warn("Enter a valid date");
     } else if (dateStart === dateEnd) {
-      toast.warn("Tus fechas son iguales");
+      toast.warn("Your dates are equal");
+    } else if (dateEnd === "") {
+      toast.warn("Enter end date");
+    } else if (yearEnd < yearStart) {
+      toast.warn("Enter end date valid");
+    } else if (
+      (yearEnd < yearStart + 1) & (monthEnd < monthStart) ||
+      dayEnd < dayStart
+    ) {
+      toast.warn("Enter end date valid");
     } else {
       dispatch(setTareas({ title, description, dateStart, dateEnd, tag }));
 
@@ -66,28 +84,28 @@ export default function Modal(props) {
         theme="dark"
       />
       <div id={styles.Modal}>
-        <div id={styles.Titulo}>Nueva Tarea</div>
+        <div id={styles.Titulo}>New Task</div>
         <button onClick={() => props.toggleModal()} id={styles.ButtonModal}>
           x
         </button>
         <div id={styles.FormContainer}>
           <form onSubmit={handleSubmit} id={styles.Form} method="post">
-            <div>Titulo</div>
+            <div>Title</div>
             <input
               id={styles.InputTitle}
-              placeholder="Ingresar titulo"
+              placeholder="Enter title"
               maxLength="20"
             />
-            <div>Descripcion</div>
+            <div>Description</div>
             <textarea
               id={styles.InputDescription}
               type="text"
-              placeholder="Descripcion (Max 256)"
+              placeholder="Description (Max 256)"
               maxLength="256"
             />
             <div id={styles.ContainerCalendar}>
               <div>
-                Fecha de inicio
+                Start date
                 <Calender
                   id={styles.CalenderStartDate}
                   value={startDate}
@@ -95,7 +113,7 @@ export default function Modal(props) {
                 />
               </div>
               <div id={styles.InputTitle}>
-                Fecha de finalizacion
+                Completion date
                 <Calender
                   value={endDate}
                   setValue={setEndDate}
@@ -105,11 +123,11 @@ export default function Modal(props) {
               <div>
                 Tag
                 <div id={styles.Tag}>
-                  <Tag value={tag} setValue={setTag} />
+                  <Tag value={tag} setvalue={setTag} />
                 </div>
               </div>
               <button id={styles.ContainerButton} type="submit" name="submit">
-                Aceptar
+                Accept
               </button>
             </div>
           </form>
