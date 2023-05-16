@@ -45,7 +45,7 @@ const ModalTags = (props) => {
         theme="dark"
       />
       <div id={styles.Modal}>
-        <div id={styles.Titulo}>Agregar nuevo tag</div>
+        <div id={styles.Titulo}>Add new tag</div>
         <button onClick={() => props.toggleModal()} id={styles.ButtonModal}>
           x
         </button>
@@ -55,11 +55,11 @@ const ModalTags = (props) => {
               value={inputText}
               onChange={(e) => setInputText(e.target.value)}
               id={styles.InputTags}
-              maxLength="20"
+              maxLength="15"
               name="inputTags"
             />
             <button id={styles.ButtonAdd} type="submit" name="submit">
-              Añadir
+              Add
             </button>
           </form>
           <div id={styles.TagsContainer}>

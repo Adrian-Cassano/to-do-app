@@ -4,7 +4,6 @@ import { persistStore } from "redux-persist";
 import store from "../../redux/store/store";
 
 import { useNavigate } from "react-router-dom";
-import { ToastContainer } from "react-toastify";
 
 import { stateModal } from "../../redux/slices/modalSlice";
 import { stateName } from "../../redux/slices/userSlice";
@@ -21,34 +20,24 @@ const Home = () => {
 
   const persistor = persistStore(store);
 
-  const deleteAll = () => {
-    persistor.purge();
-     navigate("/");
-    window.location.assign("/")
-  };
-
   const modalSlice = useSelector(stateModal);
   const userSlice = useSelector(stateName);
 
   const [modalOpen, setModalOpen] = useState(false);
   const [modalTagsOpen, setModalTagsOpen] = useState(false);
 
+  const deleteAll = () => {
+    persistor.purge();
+     navigate("/");
+    window.location.assign("/")
+  };
+
+ 
+
   
   return (
     <div id={styles.MasterContainer}>
-      <ToastContainer
-        position="top-center"
-        autoClose={5000}
-        limit={1}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover={false}
-        theme="dark"
-      />
+      
       {modalOpen && <Modal toggleModal={() => setModalOpen(!modalOpen)} />}
       {modalTagsOpen && (
         <ModalTags toggleModal={() => setModalTagsOpen(!modalTagsOpen)} />
@@ -57,30 +46,30 @@ const Home = () => {
         <div id={styles.NabBar}>
           <div id={styles.ContainerName}>
             {userSlice ? (
-              <div id={styles.Name}>Hola {userSlice} !</div>
+              <div id={styles.Name}>Hi {userSlice} !</div>
             ) : (
-              <span>No ingresaste ningun nombre</span>
+              <span>You did not enter any name</span>
             )}
-            <div id={styles.SubTitle}>Aca podras manejar tus tareas!</div>
+            <div id={styles.SubTitle}>Here you can manage your tasks!</div>
           </div>
           <div id={styles.ContainerButton}>
             <form onSubmit={deleteAll}>
               <button id={styles.ButtonDeletAll} type="submit">
-                Eliminar perfil
+                Delet profile
               </button>
             </form>
             <button
               id={styles.ButtonTags}
               onClick={() => setModalTagsOpen(!modalTagsOpen)}
             >
-              Agregar tags
+              Add tags
             </button>
 
             <button
               onClick={() => setModalOpen(!modalOpen)}
               id={styles.ButtonTags}
             >
-              Agregar tarea
+              Add task
             </button>
           </div>
         </div>

@@ -3,11 +3,11 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   tags: [
     {
-      tag: "Casa",
+      tag: "Home",
       id: 0,
     },
     {
-      tag: "Trabajo",
+      tag: "Work",
       id: 1,
     },
   ],
