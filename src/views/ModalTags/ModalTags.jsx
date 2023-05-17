@@ -20,9 +20,9 @@ const ModalTags = (props) => {
     e.preventDefault();
     const tag = e.target[0].value;
     if (tag === "") {
-      toast.warn("Ingresa un tag");
+      toast.warn("Enter a tag");
     } else if (tag < 1) {
-      toast.warn("Minimo 2 carácteres");
+      toast.warn("Min. 2 characters");
     } else {
       dispatch(setTag({ tag }));
     }
@@ -65,6 +65,8 @@ const ModalTags = (props) => {
           <div id={styles.TagsContainer}>
             {tagSlice?.tags?.map((tag, index) => {
               return (
+                tag.tag !== "Home" &&
+                tag.tag !== "Work" &&
                 <div key={index + tag.id}>
                   <button
                     id={styles.ButtonTag}

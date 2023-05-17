@@ -19,8 +19,8 @@ export default function Tag({ value, setvalue }) {
       >
         {tagSlice?.tags?.map((tag, index) => {
           return (
-            <option key={tag.id + index} value={tag.tag}>
-              {tag.tag}
+            <option key={tag.id + index} value={tag?.tag}>
+              {tag?.tag}
             </option>
           );
         })}
